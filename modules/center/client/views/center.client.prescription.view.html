@@ -1,0 +1,108 @@
+<div class="right-col">
+  <div class="col-xs-12 patient-details">
+
+    <h4><b>Add or Search Drugs</b></h4>
+
+    <div style="border-bottom:1px solid black;"></div>
+    <br/>
+    <div class="row form-group">
+      <input type="button" class="btn btn-info btn-xs" ng-click="addDrug=!addDrug" value="+Add Drug">
+    </div>
+    <div>
+
+      <div class="row form-group">
+        <div class="col-xs-2"><label for="drugName">Drug Name*:</label></div>
+        <div class="col-xs-4"><input type="text" class="form-control" ng-model="prescriptions.DrugName" required>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-xs-2"><label for="DrugTypeName">Drug Type*:</label></div>
+        <div class="col-xs-4"><select class="form-control" ng-model="type.DrugTypeName" ng-options="type.DrugTypeName for type in typp"></select>  </div>
+
+   <!--<a ng-click="addType=!addType">Or add new</a>
+        <div ng-show="addType" class="col-xs-3"><input type="text" class="form-control" ng-model="type.DrugTypeName"></div>-->
+       
+        <span class="col-xs-2">
+            <input type="checkbox" ng-model="isChecked" /> <span>Add new</span>   
+        </span>
+        <div ng-show="isChecked= !isChecked">
+          <div class="col-xs-3">
+            <input type="text" style="width:230px;" class="form-control" ng-model="type.DrugTypeName"/>
+          </div>
+          <div class="col-xs-1">
+            <input type="button" ng-click="saveDrugType()" class="btn btn-info btn-xs" value="Save">
+          </div>  
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-xs-2"><label for="Strength">Strength:</label></div>
+        <div class="col-xs-2"><input type="text" class="form-control" ng-model="prescriptions.DrugStrength"></div>
+        <div class="col-xs-2"><select class="form-control" ng-model="unit.Unit" ng-options="tunit.Unit for tunit in units"></select></div>
+        <!--<a ng-click="addUnits=!addUnits">Or add new</a>
+        <div ng-show="addUnits" class="col-xs-3"><input type="text" class="form-control" ng-model="unit.Unit"></div>-->
+       <span class="col-xs-2">
+            <input type="checkbox" ng-model="isCheck" /> <span>Add new</span>   
+        </span>
+        <div ng-show="isCheck= !isCheck">
+          <div class="col-xs-3">
+            <input type="text" style="width:230px;" ng-model="unit.Unit" class="form-control" />
+          </div>
+          <div class="col-xs-1">
+            <input type="button" ng-click="saveUnit()" class="btn btn-info btn-xs" value="Save">
+          </div>  
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-xs-2"><label for="instructions">Instructions:</label></div>
+        <div class="col-xs-4"><input type="text" class="form-control" ng-model="prescriptions.DrugInstruction"></div>
+      </div>
+
+      <center>
+        <div class="row">
+          <div class="col-md-1"><button class="btn btn-info btn-xs" ng-click="savePrescriptions(unit.Unit._id,type.DrugTypeName._id )">Save New</button></div>
+          <div class="col-md-1"><button class="btn btn-danger btn-xs" ng-click="addDrug=!addDrug">Cancel</button></div>
+        </div>
+      </center>
+
+
+    </div>
+    <br/>
+    <hr>
+    <form role="search" method="get" action="">
+      <input type="text" placeholder="Search" ng-model="searchName.drugName">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      <hr>
+    </form>
+
+    <!--The code for displaying entered Data starts here-->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Drug Name</th>
+          <th>Drug Type</th>
+          <th>Strength</th>
+          <th>Unit</th>
+          <th>Instructions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="d in druglist | filter: searchName track by $index ">
+          <td><label ng-hide="currentEditIndex == $index">{{d.drugs[0].DrugName}}</label></td>
+          <td><label ng-hide="currentEditIndex == $index">{{d.drugType[0].DrugTypeName}}</label></td>
+          <td><label ng-hide="currentEditIndex == $index">{{d.drugs[0].DrugStrength}}</label></td>
+          <td><label ng-hide="currentEditIndex == $index">{{d.unit[0].Unit}}</label></td>
+          <td><label ng-hide="currentEditIndex == $index">{{d.drugs[0].DrugInstruction}}</label></td>
+          <td><button class="btn btn-primary" ng-click="deleteItem(d,$index)" ng-hide="currentEditIndex == $index">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div ng-show="druglist.length==0" class="row form-group">
+      <br/>
+      <label class="emptyMsg"><b>No Prescriptions found</b></label>
+    </div>
+  </div>
+</div>

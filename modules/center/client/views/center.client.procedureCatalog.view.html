@@ -1,0 +1,104 @@
+<div class="right-col">
+    <div class="col-xs-12 patient-details">
+
+        <!--Heading On top Here-->
+        <h4><b>Procedure Catalog</b></h4>
+        <div style="border-bottom:1px solid black;"></div>
+        <br/>
+        <div class="row form-group">
+            <div class="col-xs-2"><label for="p.procedureName">Procedure Name:<i class="centerstar">*</i></label></div>
+            <div class="col-xs-4"><input type="text" class="form-control" ng-model="procs.procedureName" required></div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-xs-2"><input type="checkbox" class="styled" ng-click="dname=!dname" ng-model="procs.procedureMain" ng-true-value='true'
+                    ng-false-value='false'> Add Under</div>
+            <div class="col-xs-10">
+                <div ng-show="dname">
+                    <select class="form-control label-width col-xs-3" ng-model="procs.procedureCategory" ng-options="x.procedureCategory for x in category"></select>
+                    <span class="col-xs-2">
+            <input type="checkbox" ng-model="isChecked" /> <span>Add new</span>
+                    </span>
+                    <div ng-show="isChecked= !isChecked">
+                        <div class="col-xs-3">
+                            <input type="text" style="width:200px;" class="form-control" ng-model="procs.procedureCategory" />
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="button" ng-click="saveCategory()" class="btn btn-info btn-xs" value="Save">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+
+    <div class="row form-group">
+        <div class="col-xs-2"><label for="procs.procedureCost">Procedure Cost:<i class="centerstar">*</i></label></div>
+        <div class="col-xs-4"><input type="number" class="form-control" ng-model="procs.procedureCost"></div>
+        <div class="col-xs-4"><input type="checkbox" class="styled" ng-model="procs.xTooth"> Multiply Num of Tooth</div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-xs-2"><label for="notes">Default Notes</label></div>
+        <div class="col-xs-4"><input type="text" class="form-control" ng-model="procs.notes"></div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-xs-2"><label for="isTaxTDS">Applicable Taxes</label></div>
+        <div class="col-xs-2"><input type="checkbox" class="styled" ng-model="procs.isTaxTDS"> TDS</div>
+        <div class="col-xs-2"><input type="checkbox" class="styled" ng-model="procs.isTaxVAT"> VAT</div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-xs-6"><input type="Submit" class="pull-right btn btn-info" value="Save Procedure" ng-click="saveProcedurecatalog(procs.procedureCategory._id)" ng-disabled="$invalid"></div>
+    </div><br>
+  
+
+    <!--<div style="border-bottom:1px solid black;"></div>-->
+    <hr>
+    <!--Search functionality here-->
+    <form role="search" method="get" class="row form-group">
+        <input type="text" placeholder="Search" class="info" ng-model="SearchName.procedureName">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </form>
+
+    <!--The code for displaying entered Data starts here-->
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Procedure Name</th>
+                <th>Cost</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="p in proclist | filter: SearchName track by $index ">
+
+                <td><label for="p.procedureName" ng-hide="currentEditIndex == $index">{{p.procedureName}}</label>
+                    <div ng-show="currentEditIndex == $index" ng-model="procedureName"><input type="text" ng-model="p.procedureName" ng-disabled="inactive"></div>
+                </td>
+                <td><label for="p.procedureCost" ng-hide="currentEditIndex == $index">{{p.procedureCost}}</label>
+                    <div ng-show="currentEditIndex == $index" ng-model="procedureCost"><input type="text" ng-model="p.procedureCost" ng-disabled="inactive"></div>
+                </td>
+
+                <td><label for="p.notes" ng-hide="currentEditIndex == $index">{{p.notes}}</label>
+                    <div ng-show="currentEditIndex == $index" ng-model="notes"><input type="text" ng-model="p.notes" ng-disabled="inactive" /></div>
+                </td>
+                <td><button class="btn btn-primary" ng-click="edit(p,$index)" ng-hide="currentEditIndex == $index">Edit</button>
+                    <button class="btn btn-danger" ng-show="currentEditIndex == $index" ng-click="cancel($index)">Cancel</button>
+                </td>
+                <td><button class="btn btn-primary" ng-show="currentEditIndex == $index" ng-click="saveItem(p,$index)">Save</button>
+                    <button class="btn btn-primary" ng-click="deleteItem(p,$index)" ng-hide="currentEditIndex == $index">Delete</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div ng-show="proclist.length==0" class="row form-group">
+        <br/>
+        <label class="emptyMsg"><b>Procedure catalog data not found</b></label>
+    </div>
+</div>
+</div>
+</div>

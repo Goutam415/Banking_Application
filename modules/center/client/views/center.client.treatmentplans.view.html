@@ -1,0 +1,115 @@
+<div class="row"> 
+  <div class="col-xs-9"> 
+
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <div class="col-xs-3">
+          <h4><strong>PLANS</strong></h4>
+        </div>
+        <div class="col-xs-3 col-xs-push-7">
+          <input type="button" value="Cancel" />
+           <input type="button" value="Save Treatment Plan" ng-click="saveTreatmentPlans(treatmentPlans._id)" />
+        </div>
+      </div>
+    </div>
+    <br/>
+   <div ng-show='showProcedure'>
+
+        <table id="keywords" cellspacing="0" cellpadding="0" class="border-bottom">
+        <thead class="table-class">
+          <tr>
+            <th><span>PROCEDURES</span></th>
+            <th><span>Quantity</span></th>
+            <th><span>COST</span></th>
+            <th><span>DISCOUNT</span></th>
+            <th><span>TOTAL</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="lalign"><b>{{maintreatmentPlans.procedureCategory}}</b></> -->  <br/>
+              {{treatmentPlans.procedureName}} <br/>
+              <a ng-click="addNotes()">+ add notes</a><br/>
+              <div ng-show="treatmentNotes">
+                <textarea rows="4" cols="50" class="aboutDescription" ng-model="treatmentPlans.notes"></textarea>
+              </div>
+              </td>
+            <td> <input type="text" ng-model="treatmentPlans.quantity" style="width:100px;" ng-change="calculateTotalCost()" /> <br/>
+            <a ng-click="showTooth()">show Tooth</a>
+            <div ng-show="treatmentTooth">
+                <div class="btn-group">
+    <button type="button" class="btn btn-primary">21</button>
+    <button type="button" class="btn btn-primary">22</button>
+    <button type="button" class="btn btn-primary">23</button>
+    <button type="button" class="btn btn-primary">24</button>
+    <button type="button" class="btn btn-primary">25</button>
+  </div>
+              </div>
+            </td>
+            <td> <input type="text" ng-model="treatmentPlans.procedureCost" style="width: 100px;"/></td>
+            <td>
+              <a ng-click="showDiscount()">+ add discount</a>
+              <div ng-show="treatmentDicount">
+                <input type="text" ng-model="treatmentPlans.discount" ng-change="calculateTotalCost()"/>
+              </div>
+              </td>
+            <td ng-show="!treatmentPlans.discount">{{treatmentPlans.procedureCost}}</td>
+            <td ng-show="treatmentPlans.discount.length != 0">{{treatmentPlans.totalAmount}}</td>
+          </tr>
+        </tbody>
+       
+      </table>
+             </div>
+
+
+    <div id="wrapper1">
+      <table id="keywords" cellspacing="0" cellpadding="0" class="border-bottom">
+        <thead class="table-class">
+          <ul>
+            <li><span>PROCEDURES (in INR) </span></li>
+          </ul>
+        </thead>
+        <tbody >
+          <ul ng-repeat="mainProcedure in mainProcedures">
+            <li class="lalign glyphicon glyphicon-plus" ng-click="mymodel1 = !mymodel1">
+              {{mainProcedure.procedureCategory}}
+            </li>
+            <li ng-repeat="subProcedure in subProcedures" ng-click="showSubProcedure(subProcedure, mainProcedure)">
+              <div ng-show="mymodel1" ng-if="subProcedure.idCategory== mainProcedure._id.toString()">
+                    <div> {{subProcedure.procedureName}} </div>       
+              </div>
+              </li>
+             
+          </ul>
+            </tbody>
+               </table>
+    </div>
+
+    <br/>
+     <br/>
+      <br/>
+    <footer>
+                 <div class="form-group row">
+                   <div class="col-xs-2">
+                     <label>Total Cost</label>
+                    <p> {{treatmentPlans.procedureCost}}</p>
+                   </div> 
+                   <div class="col-xs-1">
+                     <label class="glyphicon glyphicon-minus"></label>
+                   </div>
+                   <div class="col-xs-2">
+                     <label>Total Discount</label>
+                    <p> {{treatmentPlans.discount}}</p>
+                   </div>
+                   <div class="col-xs-1">
+                     <label> = </label>
+                   </div>
+                   <div class="col-xs-2">
+                     <label>Grand Total</label>
+                    <p> {{treatmentPlans.totalAmount}}</p>
+                   </div>
+                 </div>
+               </footer>
+   
+  </div>
+</div>

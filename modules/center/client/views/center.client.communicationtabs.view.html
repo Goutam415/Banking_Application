@@ -1,0 +1,32 @@
+<div class="right-col clearfix">
+          <div class="close-left-menu">
+            <img src="../img/clode-icon.png">
+          </div>
+          <div class="col-md-12 patient-details ">
+            <div class="patient-profile  display-flex-center clearfix patient-profile-search">
+                
+              <div class="fl col-xs-5  no-padding">  
+                  <h4>COMMUNICATION SETTINGS</h4>
+                  </div>
+              <div class="col-xs-7 pull-right no-padding search-section">
+                <div class="pull-right">
+                
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="patient-section-view padding35 clearfix">
+               <ul class="nav nav-tabs">
+    <li ng-class="{active:isSet(1)}"><a ui-sref="center.settings.communications.appointment" ng-click="setTab(1)">Appointment & Followup SMS</a></li>
+    <li ng-class="{active:isSet(2)}"><a ui-sref="center.settings.communications.wishsms" ng-click="setTab(2)">Wish SMS</a></li>
+    <li ng-class="{active:isSet(3)}"><a ui-sref="center.settings.communications.emails" ng-click="setTab(3)">Emails</a></li>
+    <li ng-class="{active:isSet(4)}"><a ui-sref="center.settings.communications.settings" ng-click="setTab(4)">Settings</a></li>
+  </ul> 
+            
+ <div ui-view></div>
+              
+              
+            </div>
+          </div>
+</div>

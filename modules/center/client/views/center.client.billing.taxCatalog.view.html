@@ -1,0 +1,65 @@
+
+  
+  <h4><b>Tax Catalog</b></h4>
+  <hr>
+     
+      <div class="row form-group">
+          <div class="col-sm-3"><label for="taxName">Tax Name:</label></div>
+          <div class="col-sm-4"><input type="text" class="form-control" ng-model="taxName" required></div>
+      </div>
+
+      <div class="row form-group">
+          <div class="col-sm-3"><label for="taxPercentage">Tax Percentage:</label></div>
+          <div class="col-sm-4"><input type="text" class="form-control" ng-model="taxPercentage" ></div>
+      </div>
+
+      <div class="row form-group">
+          <div class="col-sm-3"><label for="taxValue">Tax Value:</label></div>
+          <div class="col-sm-4"><select class="form-control" name="typ" ng-model="taxValue" 
+            ng-options="t for t in taxVal" required>
+            </select>
+          </div>
+      </div>
+
+      <div class = "buttonstyle row form-group col-md-6 col-md-push-4">
+        <input type="Submit" value="Save" ng-click="saveTax()" class="btn btn-info" ng-disabled="myForm.$invalid">
+      </div>
+        <br/>
+
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Tax Name</th><th>Tax Percentage</th><th>Tax Value</th>
+    </tr>
+  </thead>
+  
+
+  <tbody>
+    <tr ng-repeat="t in taxlist track by $index">  
+    <td><label class="" for="taxName" ng-hide = "currentEditIndex == $index" >{{t.taxName}}</label> 
+    <div ng-show ="currentEditIndex == $index" ng-model="taxName"><input type="text" ng-model="t.taxName" ng-disabled = "inactive" /></div></td>
+
+    <td><label class="" for="taxPercentage" ng-hide = "currentEditIndex == $index" >{{t.taxPercentage}}</label>
+    <div ng-show="currentEditIndex == $index" ng-model="taxPercentage"><input type="text" ng-model="t.taxPercentage" ng-disabled="inactive" /></div></td>
+
+    <td><label class="" for="taxValue" ng-hide = "currentEditIndex == $index" >{{t.taxValue}}</label>
+    <div ng-show="currentEditIndex == $index" ng-model="taxValue"><input type="text" ng-model="t.taxValue" ng-disabled="inactive" /></div></td>  
+  
+    <td><button type="button" class="btn btn-primary" ng-click="edit(t,$index)" ng-hide = "currentEditIndex == $index">Edit</button>
+    <button class="btn btn-danger" ng-show="currentEditIndex == $index" ng-click="cancel($index)">Cancel</button></td>
+        
+    <td><button  class="btn btn-primary" ng-show="currentEditIndex == $index" ng-click="savetax(t,$index)">Save</button>
+    <button  class="btn btn-primary" ng-click="deleteItem(t,$index)" ng-hide= "currentEditIndex == $index">Delete</button></td>
+
+    </tr> 
+  </tbody>
+</table>
+<div ng-show="taxlist.length==0"> 
+  <br/>
+  <label class="emptyMsg"><b>No data found, please add Tax catalog details</b></label>
+  </div>
+
+
+
+
+ 

@@ -1,0 +1,87 @@
+<!--form starts here-->
+<div class="container">
+   <form  role="form" class="form-horizontal" style="margin-top:50px;">
+    <flash-message></flash-message>
+      <div class="row">
+         <div class="col-md-10">
+            <div class="form-group">
+               <label class="control-label col-sm-2" for="email">Contact Number:</label>
+               <div class="col-sm-3">
+                  <input type="email" class="form-control" id="email" placeholder="Contact Number" ng-model="comm.contact">
+               </div>
+               <div class="col-sm-5">
+                  <p>Maximum 15 characters &amp; represented as (clinic contact number)</p>
+               </div>
+            </div>
+            <div class="form-group">
+               <label class="control-label col-sm-2" for="pwd">Email Address:</label>
+               <div class="col-sm-3">
+                  <input type="email" class="form-control" id="pwd" placeholder="Enter Email" ng-model="comm.email">
+               </div>
+               <div class="col-sm-5">
+                  <p>All replies by patients for emails will be sent to this address</p>
+               </div>
+            </div>
+            <div class="form-group">
+               <label class="control-label col-sm-2" for="pwd">SMS Language:</label>
+               <div class="col-sm-3">
+                  <select class="form-control" id="sel1">
+                     <option>English</option>
+                     <option>Hindi</option>
+                     <option>Telugu</option>
+                     <option>Tamil</option>
+                  </select>
+               </div>
+               <div class="col-sm-5">
+                  <p>SMS to patients will be sent in this language</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div ng-repeat="sms in smsTemplates">
+         <div class="row">
+         <div class="col-md-12 ">
+            <div class="checkbox-inline">
+               <label>
+               <input type="checkbox"  ng-true-value="true" ng-false-value="false"  ng-model="sms.active" /> {{sms.name}}
+            </div>
+            <div style="border-bottom:1px solid black;"><em>{{sms.hint}}</em></div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6">
+            <div style="margin-top:10px;"><textarea rows="4" cols="80" style="background-color:#D3D3D3;" ng-model="sms.content"   ui-mention mention-example template= 'sms'>
+
+               </textarea>
+               <!--$mention.select(choice)  {{::choice.last}}-->
+            <ul class="dropdown" ng-if="$mention.choices.length">
+    <li  ng-repeat="choice in $mention.choices"
+      ng-class="{active:$mention.activeChoice==choice}"
+      ng-click="$mention.select(choice)">
+    {{::choice.first}}
+    </li>
+  </ul>
+            </div>
+
+         </div>
+         <div class="col-md-6 col-md-push-2" ng-if="sms.attributes_used.length > 0">
+            <div>
+               Include the following in the SMS
+            </div>
+            <div ng-repeat="anAttribute in sms.attributes_used">
+              <div class="checkbox-inline">
+               <label>
+               {{anAttribute.display_value}}
+               </label>
+            </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      <div class="form-group-row">
+         <div class="col-sm-2">
+         </div>
+         <button type="button" class="btn btn-primary" ng-click="saveSMS()">Save Setting</button>
+      </div>
+   </form>
+</div>

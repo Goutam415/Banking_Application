@@ -1,0 +1,67 @@
+<div class="container">
+
+  <form name="emr" role="form" style="margin-top:30px;" novalidate>
+    <flash-message></flash-message>
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="form-group">
+          <label class="sr-only" for="inputEmail"></label>
+          <input type="text" class="form-control" placeholder="" ng-model="newDiagnose" name="Diagnose" ng-pattern="/^[a-zA-Z0-9]*$/"
+            required>
+          <div ng-messages="emr.Diagnose.$error">
+            <div ng-message="pattern"> Special Characters and numbers are not allowed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" ng-click="addItem()">Add New</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="form-group">
+          <label class="sr-only" for="inputEmail"></label>
+          <input type="text" class="form-control" id="inputEmail" placeholder="search" ng-model="query">
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-repeat="aDiagnoses in diagnoses | filter:query ">
+      <div ng-if="aDiagnoses.active==true">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label class="" for="inputEmail" ng-hide="currentEditIndex == $index">{{aDiagnoses.name}}</label>
+            <div ng-show="currentEditIndex == $index" ng-model="aDiagnoses.name"><input type="text" ng-model="aDiagnoses.name" ng-disabled="inactive" /></div>
+          </div>
+        </div>
+        <div class="col-xs-7 col-xs-push-5">
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" ng-click="edit(aDiagnoses,$index)" ng-hide="currentEditIndex == $index">Edit</button>
+            <button class="btn btn-danger" ng-show="currentEditIndex == $index" ng-click="cancel($index)" ng-model="aDiagnoses.name">Cancel</button>
+            <button class="btn btn-primary" ng-show="currentEditIndex == $index" ng-click="save(aDiagnoses, $index)" ng-disabled="aDiagnoses.name.length == 0">Save</button>
+            <button class="btn btn-primary" ng-click="deleteItem(aDiagnoses,$index)" ng-hide="currentEditIndex == $index">Hide</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-bottom:1px solid black; width:80%;"> </div>
+    <div style="padding:3px"></div>
+    <div class="row" ng-repeat="inActiveDiagnose in inactivearray |filter:query">
+      <div ng-if="inActiveDiagnose.active==false">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label class="" for="inputEmail" ng-hide="currentEditIndex == $index">{{inActiveDiagnose.name}}</label>
+          </div>
+        </div>
+        <div class="col-xs-7 col-xs-push-5">
+          <div class="form-group">
+            <button class="btn btn-primary" ng-click="unhide(inActiveDiagnose,$index)" ng-hide="currentEditIndex == $index">Unhide</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+</div>

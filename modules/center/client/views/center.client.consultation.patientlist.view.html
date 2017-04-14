@@ -1,0 +1,81 @@
+<div style="padding-bottom:80%;">
+<!--patient groups html block starts-->
+<!--patient groups html block ends-->
+<div class="col-xs-6 col-sm-4 col-md-3 mt30 single-patient-details-parent">
+   <div style="padding:10px"></div>
+
+   <form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchpatient">
+    </div>
+    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+</form>
+
+  <div class="panel panel-default">
+  <div class="panel-heading"><h2>Patients</h2></div>
+  <div class="panel-body"> <div class="row">
+            <div class="col-md-10">All Patients</div><div class="col-md-2">{{patients.length}}</div>
+        </div></div>
+  <div class="panel-body">Recently Visited</div>
+  <div class="panel-body">Recently Added</div>
+  <div class="panel-heading"><h2>Groups</h2></div>
+  <div class="panel-body">
+    <div class="col-md-5"><a>My Groups</a></div>
+    <div class="col-md-1 col-md-push-3"><a>manage</a></div>
+  </div>
+  <div class="panel-body"><a>smart groups</a></div>
+   <!--<div class="panel-body">
+    <div class="row">
+            <div class="col-md-10">All Male Customers</div><div class="col-md-2">34</div>
+        </div>
+   </div>
+   <div class="panel-body">
+        <div class="row">
+            <div class="col-md-10">All Female Customers</div><div class="col-md-2">23</div>
+        </div>
+   </div>
+   <div class="panel-body">
+        <div class="row">
+            <div class="col-md-10">Female Custoomers under 30</div><div class="col-md-2">34</div>
+        </div>
+   </div>
+<div class="panel-body">
+        <div class="row">
+            <div class="col-md-10">Female Customers over 30</div><div class="col-md-2">23</div>
+        </div>
+</div>-->
+  </div>
+
+</div>
+ <div class="col-xs-6 col-sm-4 col-md-3 mt30 single-patient-details-parent" ng-click="openPatientProfile(aPatient)" ng-repeat="aPatient in patients | filter:searchpatient">
+   <div style="padding:10px"></div>
+  <div class="single-patient-details border-green clearfix" style="border: 1px solid black;">
+    <div class="patient-image-search gray-background">
+      <div>
+        <center>
+      <img ng-src="{{consultationImage(aPatient)}}" class="img-responsive">
+        </center>
+      </div>
+    </div>
+    <div class="pt10 pb10 clearix white-background">
+      <center>
+      <div class="name-gender clearfix">
+        <div class="fl patient-name-single pl10 pr10">
+        <div style="padding:5px"></div>
+          <h4 class="patient-other-details pt10  clearfix">{{aPatient.name}}</h6>
+        </div>
+        <div class="fr patinet-gender pl10 pr10">
+          <p class="green-color no-margin font-bold">{{aPatient.gender}}</p>
+        </div>
+      </div>
+      <div class="patient-other-details pt10  clearfix">
+        <div>Mobile: {{aPatient.mobile}} </div>
+        <div style="overflow-wrap: break-word;">Email: {{aPatient.email}} </div>
+        <div>Blood Group: {{aPatient.bloodGroup}} </div>
+      </div>
+      </center>
+    </div>
+  </div>
+</div>
+
+</div>

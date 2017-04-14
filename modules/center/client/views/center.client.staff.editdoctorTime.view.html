@@ -1,0 +1,432 @@
+<div class="docvisitmargins">
+<div style="border-bottom: 1px solid black; width: 65%;"><h6><small>EDIT VISIT TIMINGS FOR DOCTOR</small></h6></div>
+
+
+<label class="checkbox-inline" style="margin-top: 10px"><input type="checkbox"/>Visiting hours are NOT same for all working hours in a Week</label>
+
+
+<form>
+                    <label for="group"><b>Monday</b></label>
+
+                    <div class="row rowheight">
+                    <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitMon" ng-disabled="visitBreakMon" name="group">Visit this clinic on Monday</label>
+                      </div>
+                      <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitBreakMon" ng-disabled="visitMon" name="group">I take a break for lunch</label>
+                      </div>
+                      </div>
+                      </form>
+                      <br>
+                      <div ng-show="visitMon">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="monday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+
+                        <label class="col-md-2">Leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="monday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        </div>
+                         <br/>
+
+                      <div ng-show="visitBreakMon">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="monday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I take a break at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="monday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row rowheight">
+
+                        <label class="col-md-2">I Resume at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="monday.slot2.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="monday.slot2.endTime"  placeholder="HH:mm" class="timingwidth">
+
+                        </div>
+                        </div>
+                      </div>
+                       <br/>
+                      <form>
+                      <div style="border-top: 1px solid black; width: 65%"><label for="group"><b>Tuesday</b></label></div>
+
+                    <div class="row rowheight">
+                    <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitTue" ng-disabled="visitBreakTue" name="group">Visit this clinic on Tuesday</label>
+                      </div>
+                      <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitBreakTue" ng-disabled="visitTue" name="group">I take a break for lunch</label>
+                      </div>
+                      </div>
+                      </form>
+                      <br>
+                      <div ng-show="visitTue">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="tuesday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+
+                        <label class="col-md-2">Leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="tuesday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        </div>
+                         <br/>
+
+                      <div ng-show="visitBreakTue">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="tuesday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I take a break at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="tuesday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row rowheight">
+
+                        <label class="col-md-2">I Resume at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="tuesday.slot2.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="tuesday.slot2.endTime"  placeholder="HH:mm" class="timingwidth">
+
+                        </div>
+                        </div>
+                      </div>
+                       <br/>
+
+                      <form>
+                      <div style="border-top: 1px solid black; width: 65%"><label for="group"><b>Wednesday</b></label></div>
+
+                    <div class="row rowheight">
+                    <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitWed" ng-disabled="visitBreakWed" name="group">Visit this clinic on Wednesday</label>
+                      </div>
+                      <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitBreakWed" ng-disabled="visitWed" name="group">I take a break for lunch</label>
+                      </div>
+                      </div>
+                      </form>
+                      <br>
+                      <div ng-show="visitWed">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="wednesday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+
+                        <label class="col-md-2">Leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="wednesday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        </div>
+                         <br/>
+
+                      <div ng-show="visitBreakWed">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="wednesday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I take a break at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="wednesday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row rowheight">
+
+                        <label class="col-md-2">I Resume at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="wednesday.slot2.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="wednesday.slot2.endTime"  placeholder="HH:mm" class="timingwidth">
+
+                        </div>
+                        </div>
+                      </div>
+                       <br/>
+
+                      <form>
+                      <div style="border-top: 1px solid black; width: 65%"><label for="group"><b>Thursday</b></label></div>
+
+                    <div class="row rowheight">
+                    <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitThu" ng-disabled="visitBreakThu" name="group">Visit this clinic on Thursday</label>
+                      </div>
+                      <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitBreakThu" ng-disabled="visitThu" name="group">I take a break for lunch</label>
+                      </div> 
+                      </div>
+                      </form>
+                      <br>
+                      <div ng-show="visitThu">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="thursday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+
+                        <label class="col-md-2">Leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="thursday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        </div>
+                         <br/>
+
+                      <div ng-show="visitBreakThu">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="thursday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I take a break at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="thursday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row rowheight">
+
+                        <label class="col-md-2">I Resume at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="thursday.slot2.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="thursday.slot2.endTime"  placeholder="HH:mm" class="timingwidth">
+
+                        </div>
+                        </div>
+                      </div>
+                       <br/>
+
+                      <form>
+                      <div style="border-top: 1px solid black; width: 65%"><label for="group"><b>Friday</b></label></div>
+
+                    <div class="row rowheight">
+                    <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitFri" ng-disabled="visitBreakFri" name="group">Visit this clinic on Friday</label>
+                      </div>
+                      <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitBreakFri" ng-disabled="visitFri" name="group">I take a break for lunch</label>
+                      </div>
+                      </div>
+                      </form>
+                      <br>
+                      <div ng-show="visitFri">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="friday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+
+                        <label class="col-md-2">Leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="friday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        </div>
+                         <br/>
+
+                      <div ng-show="visitBreakFri">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="friday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I take a break at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="friday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row rowheight">
+
+                        <label class="col-md-2">I Resume at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="friday.slot2.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="friday.slot2.endTime"  placeholder="HH:mm" class="timingwidth">
+
+                        </div>
+                        </div>
+                      </div>
+                       <br/>
+
+
+                       <form>
+                      <div style="border-top: 1px solid black; width: 65%"><label for="group"><b>Saturday</b></label></div>
+
+                    <div class="row rowheight">
+                    <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitSat" ng-disabled="visitBreakSat" name="group">Visit this clinic on Saturday</label>
+                      </div>
+                      <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitBreakSat" ng-disabled="visitSat" name="group">I take a break for lunch</label>
+                      </div>
+                      </div>
+                      </form>
+                      <br>
+                      <div ng-show="visitSat">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="saturday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+
+                        <label class="col-md-2">Leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="saturday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        </div>
+                         <br/>
+
+                      <div ng-show="visitBreakSat">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="saturday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I take a break at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="saturday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row rowheight">
+
+                        <label class="col-md-2">I Resume at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="saturday.slot2.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="saturday.slot2.endTime"  placeholder="HH:mm" class="timingwidth">
+
+                        </div>
+                        </div>
+                      </div>
+                       <br/>
+
+                      <form>
+                      <div style="border-top: 1px solid black; width: 65%"><label for="group"><b>Sunday</b></label></div>
+
+                    <div class="row rowheight">
+                    <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitSun" ng-disabled="visitBreakSun" name="group">Visit this clinic on Sunday</label>
+                      </div>
+                      <div class="col-md-4">
+                      <label class="checkbox-inline"><input type="checkbox" ng-model="visitBreakSun" ng-disabled="visitSun" name="group">I take a break for lunch</label>
+                      </div>
+                      </div>
+                      </form>
+                      <br>
+                      <div ng-show="visitSun">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="sunday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+
+                        <label class="col-md-2">Leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="sunday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        </div>
+                         <br/>
+
+                      <div ng-show="visitBreakSun">
+                      <div class="row rowheight">
+
+                        <label class="col-md-2">I visit Clinic at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="sunday.slot1.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I take a break at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="sunday.slot1.endTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row rowheight">
+
+                        <label class="col-md-2">I Resume at</label>
+                        <div class="col-md-2">
+                        <input type="text" ng-model="sunday.slot2.startTime"  placeholder="HH:mm" class="timingwidth">
+                        </div>
+
+                        <label class="col-md-2">I leave Clinic at</label>
+                        <div class="col-md-2">
+                       <input type="text" ng-model="sunday.slot2.endTime"  placeholder="HH:mm" class="timingwidth">
+
+                        </div>
+                        </div>
+                      </div>
+                      <br/>
+
+                      <div class="col-md-offset-3">
+                          <input type="button" value="Save Timings" ng-click="saveDoctorTimings()">
+                        </div>
+
+                    </div>

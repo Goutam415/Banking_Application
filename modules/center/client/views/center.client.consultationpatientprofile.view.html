@@ -1,0 +1,37 @@
+
+
+    <div style="background-color:#ffffff; padding-bottom:80%;">
+    <div class="container" >
+        <div class="row">
+        <div class="col-md-9 patient-details" style="margin-top:50px;">
+          <div class="patient-profile">
+            <h4>Patient's Profile</h4>
+          </div>
+          <div class="personal-details clearfix">
+            <h4 class="no-margin green-color">Personal Details</h4>
+            <div class="col-md-10 no-padding patient-details-single">
+              <div class="patient-image"><img ng-src= '{{patientdata.image}}' class="patient-image"></div>
+              <div class="name-details name-details-personal">
+                  <div class="row">
+                <div class="col-md-5"><h6>Patient's Name</h6></div>
+                <div class="col-md-6"><p>{{patientdata.name}}</p></div>
+                  </div>
+                  <div class="row">
+                <div class="col-md-5"><h6>Email ID</h6></div>
+                <div class="col-md-6"><p>{{patientdata.email}}</p></div>
+                  </div>
+                  <div class="row">
+                <div class="col-md-5"><h6>Phone Number</h6></div>
+                <div class="col-md-6"><p>{{patientdata.mobile}}</p></div>
+                  </div>
+                  <div class="row">
+                <div class="col-md-5"><h6>Address</h6></div>
+                <div class="col-md-6"><p>{{formattedAddress(patientdata.address)}}</p></div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+    </div>

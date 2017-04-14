@@ -1,0 +1,60 @@
+<!--form starts here-->
+<div class="container">
+  <form role="form" class="form-horizontal" style="margin-top:50px;">
+    <flash-message></flash-message>
+    <div>
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="checkbox-inline">
+            <label>
+               <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model='smsSettings.onAppointmentSMS' />
+             Send reminder SMS on the day of appointment at 
+             <input type='time' ng-show='smsSettings.onAppointmentSMS' ng-model='onSMSTime' />
+               </label>
+          </div>
+
+        </div>
+        <div class="col-md-12 ">
+          <div class="checkbox-inline">
+            <label>
+               <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="smsSettings.beforeAppointmentSMS"/>
+             Send reminder SMS on the day before the appointment at
+             <input type='time' ng-show='smsSettings.beforeAppointmentSMS' ng-model='beforeSMSTime'> 
+               </label>
+          </div>
+
+        </div>
+        <div class="col-md-12 ">
+          <div class="checkbox-inline">
+            <label>
+               <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="emailSettings.onAppointmentEmail"/>
+             Send reminder Email on the day of appointment at 
+             <input type='time' ng-show='emailSettings.onAppointmentEmail' ng-model='onEmailTime'>
+               </label>
+          </div>
+
+        </div>
+        <div class="col-md-12 ">
+          <div class="checkbox-inline">
+            <label>
+               <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="emailSettings.beforeAppointmentEmail"/>
+                Send reminder Email on the day before the appointment at 
+                <input type="time" ng-show='emailSettings.beforeAppointmentEmail' ng-model='beforeEmailTime'>
+               </label>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="form-group-row">
+      <div class="col-sm-2">
+      </div>
+      <button type="button" class="btn btn-primary" ng-click="saveSettings()">Save Setting</button>
+    </div>
+
+  </form>
+</div>
+<!--form ends here-->

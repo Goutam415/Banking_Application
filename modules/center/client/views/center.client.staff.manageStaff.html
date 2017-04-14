@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-2">
+    <h5>Doctors</h5>
+  </div>
+</div>
+
+<div class="col-md-offset-10"><a ui-sref="center.settings.staff.addDoc"><button>Add doctor</button></a></div>
+<br/>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Sl.No</th>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Mobile</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="doc in doctor track by $index">
+          <td>{{$index+1}}</td>
+          <td>Dr. {{doc.name | uppercase}}</td>
+          <td>
+            <span ng-repeat="role in doc.role">{{role | uppercase}}{{{true: '', false: ', '}[$last]}}</span>
+          </td>
+          <td>{{doc.mobile}}</td>
+          <td><a href="#">edit</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div ng-show="doctor.length==0">
+      <br/>
+      <label class="emptyMsg"><b>No Doctor's found</b></label>
+    </div>
+
+  </div>
+</div>
+<br>
+<br>
+
+<div class="row">
+  <div class="col-md-4">
+    <h5>Staff</h5>
+  </div>
+</div>
+<div class="col-md-offset-10"> <a ui-sref="center.settings.staff.addstaff"><button>Add Staff</button></a>
+</div>
+<br/>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Sl.No</th>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Mobile</th>
+          <th>Last Loggedin</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <div>
+          <tr ng-repeat="staff in staffs track by $index">
+            <td>{{$index+1}}</td>
+            <td>{{staff.name | uppercase }}</td>
+            <td>
+              <span ng-repeat="role in staff.role">{{role | uppercase}}{{{true: '', false: ', '}[$last]}}</span>
+            </td>
+            <td>{{staff.mobile}}</td>
+            <td></td>
+            <td><a href="#">edit</a></td>
+          </tr>
+        </div>
+      </tbody>
+    </table>
+
+    <div ng-show="staffs.length==0">
+      <br/>
+      <label class="emptyMsg"><b>No Staff found</b></label>
+    </div>
+
+  </div>
+</div>

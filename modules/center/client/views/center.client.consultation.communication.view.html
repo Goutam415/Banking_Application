@@ -1,0 +1,139 @@
+<div class="container">
+    <!--<div class="row">
+        <div class="col-xs-10">-->
+  <form  role="form" style="margin-top:30px;" class="form-horizontal" novalidate>
+ <div class="row">
+        <div class="col-xs-12">
+        <div class="form-group">
+<div class="col-xs-3"><h4><strong>COMMUNICATIONS</strong></h4></div>
+<div class="col-xs-11 col-xs-push-4">
+ <div class="col-xs-1"><button  class="btn btn-primary" ng-click="">Save Communications</button></div>
+</div>
+        </div>
+        </div>
+        </div>
+         <div  style="border-bottom:1px solid black; width:80%;"> </div>
+        <div style="padding:3px;"></div>
+
+<div class="row">
+        <div class="col-xs-6">
+        <div class="form-group">
+        <ul style="list-style: none outside none;">
+        <li>
+             <div class="checkbox-inline">
+               <label>
+             Send reminder SMS on the day of appointment at 
+             <input type=time ng-show='settings.remainder_sms[0].on_sms_flag' ng-model='settings.remainder_sms[0].on_sms' />
+               </label>
+            </div>
+
+            <div class="btn-group" data-toggle="buttons">
+    <label class="radio-inline">
+      <input type="radio" name="optradio">Yes
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio">No
+    </label>
+</div>
+
+        </li>
+        
+        <li>
+             <div class="checkbox-inline">
+               <label>
+             Send reminder SMS on the day of appointment at 
+             <input type=time ng-show='settings.remainder_sms[0].on_sms_flag' ng-model='settings.remainder_sms[0].on_sms' />
+               </label>
+            </div>
+
+     <div class="btn-group" data-toggle="buttons">
+    <label class="radio-inline">
+      <input type="radio" name="optradio">Yes
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio">No
+    </label>
+</div>
+
+        </li>
+        <li>
+             <div class="checkbox-inline">
+               <label>
+              Next followup to go on 17 Aug 2016
+               </label>
+               <label> change </label>
+        </div>
+        </li>
+        <li>
+             <div class="checkbox-inline">
+               <label>
+             Recent appiontments change
+             <div style="border-bottom:1px solid black">
+               </label>
+        </div>
+        </li>
+            </ul>
+        </div>
+        </div>
+</div>
+
+<h3>Past Communications</h3>
+<h5>SMS</h5>
+<div class="row">
+  <div class="table-responsive">
+	<table class="table table-hover">
+        <thead>
+            <tr>
+                <th>SENT TIME</th>
+                <th>MESSAGE</th>
+                <th>DELIVERY TIME</th>
+                <th>TYPE</th>
+                <th>MESSAGE STATUS</th>
+             </tr>
+        </thead>
+        <tbody>
+             <tr ng-repeat="">
+                  <td></td>
+                  <td></td>
+                  <td>
+                  <span ng-repeat=""></span>
+                  </td>
+                  <td></td>
+                  <td></td>
+             </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<h5>EMAIL</h5>
+<div class="row">
+  <div class="table-responsive">
+	<table class="table table-hover">
+        <thead>
+            <tr>
+                <th>DELIVERY TYPE</th>
+                <th>DATE</th>
+                <th>TYPE</th>
+                <th>SUBJECT</th>
+                <th>STATUS</th>
+             </tr>
+        </thead>
+        <tbody>
+             <tr ng-repeat="">
+                  <td></td>
+                  <td></td>
+                  <td>
+                  <span ng-repeat=""></span>
+                  </td>
+                  <td></td>
+                  <td></td>
+             </tr>  
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+  </form>
+        <!--</div>
+    </div>-->
+</div>

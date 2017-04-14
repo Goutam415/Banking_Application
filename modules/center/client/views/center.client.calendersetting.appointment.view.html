@@ -1,0 +1,65 @@
+<div class="container-fluid">
+<div class="row">
+<label><b> APPOINTMENT CATEGORIES</b></label>
+</div>
+</div>
+<br/>
+<div class="container">
+<form class="form-inline" role="form">
+  <div class="row">
+    <div class="form-group">
+      <label>Add New Category</label>
+<div class="input-group input-group-sm appCategorywidth">
+  <input type="text" name="category" ng-model="name.category" class="form-control" aria-describedby="sizing-addon1">
+<span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="saveappCategory()">ADD</button>
+      </span>
+</div>
+</div>
+
+
+</div>
+<br/>
+<br/>
+<div class="row" ng-repeat="app in apps track by $index">
+
+  <div class = "col-md-1 col-md-offset-1">
+    <i class="fa-li fa fa-square" style="color: {{colors[$index]}}"></i>
+    </div>
+
+    <div class = "col-md-6">
+    {{app.category}}
+    </div>
+
+    <div class = "col-md-1">
+    <span class = "glyphicon glyphicon-remove" ng-click="removeItem($index)"></span>
+    </div>
+    <hr class="style13">
+
+   
+
+ </div>
+  <div ng-show="apps.length==0" class="row form-group">
+  <br/>
+    <label class="emptyMsg"><b>No Data found</b></label>
+  </div>
+     <!--<div>
+     <table class="table table-bordered">
+         <tbody>
+         <tr ng-repeat="app in apps">
+           <td><i class="box" style="color: {{colors[$index]}}"></i></td>
+           <td> {{app}}  </td>
+           <td><span ng-click="removeItem($index)">x</span></td>
+           </tr>
+      </tbody>
+     </table>
+</div>-->
+
+
+
+
+
+
+
+</form></div>
+

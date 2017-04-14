@@ -1,0 +1,174 @@
+<div>
+  <div class="page page-full page-calendar">
+    <div class="tbox tbox-sm">
+      <div class="tcol w-lg bg-tr-white lt b-r">
+
+        <div class="p-15 bg-white">
+          <h4 class="custom-font text-default m-0">
+            <a class="add_doctor m-5" uib-tooltip="Add Doctor" tooltip-placement="bottom" ng-click="addDoctor();"><img src="icons/add_doctor_icon.png" height="28px" width="28px" /></a>
+            <a class="add_patient m-5" uib-tooltip="Add Patient" tooltip-placement="bottom" ng-click="addPatient();"><img src="icons/add_patient_icon.jpg" height="28px" width="28px" /></a>
+            <a class="m-10" uib-tooltip="Refresh" tooltip-placement="bottom" ng-click="refreshEvents();"> <i class="icon-refresh"></i></a>
+
+          </h4>
+        </div>
+
+        <div class="p-15">
+
+          <div class="p-5 mb-5 event-control {{currentDoctorSelected=='none'?'doctor-selected':''}}">
+            <blockquote>
+              <div class="text-muted" ng-click="filterDoctorAppointment()">All Doctors <i class="fa fa-check" ng-if=" currentDoctorSelected=='none' "></i></div>
+            </blockquote>
+          </div>
+
+          <div ng-repeat="doctor in doctorLists track by $index" class="p-5 mb-5 event-control {{currentDoctorSelected==doctor._id?'doctor-selected':''}}">
+            <blockquote class="{{'b-'+doctor.calColor.toLowerCase()}}">
+              <div class="text-muted" ng-click="filterDoctorAppointment(doctor._id)">Dr. {{doctor.name}} <i class="fa fa-check" ng-if=" currentDoctorSelected==doctor._id "></i></div>
+            </blockquote>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="tcol">
+        <div class="p-15 bg-white">
+
+          <div class="pull-right">
+
+            <button type="button" class="btn btn-sm btn-default" ng-click="today()">today</button>
+
+            <div class="btn-group">
+              <button class="btn btn-default btn-sm" ng-click="changeView('agendaDay', 'myCalendar1')">Day</button>
+              <button class="btn btn-default btn-sm" ng-click="changeView('agendaWeek', 'myCalendar1')">Week</button>
+              <button class="btn btn-default btn-sm" ng-click="changeView('month', 'myCalendar1')">Month</button>
+            </div>
+
+          </div>
+
+          <h4 class="custom-font text-default m-0">Calendar</h4>
+
+        </div>
+
+        <div class="p-15">
+
+          <div class="fc-overlay">
+            <div class="panel b-solid">
+              <h4 class="text-light mt-0">{{event.title}}</h4>
+              <div class="b-b b-solid mb-10"></div>
+              <div class="text-muted"><i class="icon-calendar mr-5"></i> {{event.start | date:'medium'}}</div>
+              <div class="text-muted" ng-show='event.end'><i class="icon-clock mr-5"></i> {{event.end | date:'medium'}}</div>
+              <div class="text-muted" ng-show='event.location'><i class="icon-pointer mr-5"></i> {{event.location}}</div>
+              <div class="mt-10">{{event.info}}</div>
+              <div class="mt-10">{{event.url}}</div>
+              <a onclick="window.removeWith(event)" id="{{event.my_id}}" ng-if="event.isAllowRemove">Remove</a>
+            </div>
+          </div>
+
+          <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
+
+        </div>
+
+      </div>
+
+      <div class="tcol w-lg bg-tr-white lt b-l">
+        <div class="p-15 bg-white">
+          <button type="button" class="btn btn-greensea btn-xs mb-10 pull-right b-0" ng-click="addEvent()" uib-tooltip="Add new appointment"
+            tooltip-placement="bottom"><i class="fa fa-plus"></i></button>
+          <h4 class="custom-font text-default m-0">Queue Management</h4>
+        </div>
+        <ul class="p-15" id="sortable" ui-sortable data-ng-model="events">
+          <li ng-repeat="item in events track by $index" id="{{item.my_id}}" class="ui-state-default p-10 mb-10 event-control {{item.className[0]}}">
+
+            <div class="as-sortable-item-handle">
+              <span ng-bind="item.title" class="form-control input-sm input-unstyled "></span>
+              <div class="form-group">
+                <label class="col-sm-7 control-label">Current Status</label>
+                <div class="col-sm-5">
+                  <select ng-model="item.status" ng-change="onQueueStatusChange(item)" ng-disabled="item.status=='completed' ">
+                                <option ng-repeat="state in QueueStatusList" ng-selected="{{state == item.status}}"  value="{{state}}">{{state}}</option>
+                            </select>
+                </div>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+ </div>
+
+
+</div>
+
+ <script type="text/ng-template" id="calender_events.html">
+<div class="modal-header">
+  <h3 class="modals-title custom-font">Add/Edit Appointment</h3>
+</div>
+<div class="modal-body">
+
+
+  <form class="form-horizontal" role="form">
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Doctor</label>
+      <div class="col-sm-10">
+        <select ng-model="doctor">
+                            <option value="">Select Doctor</option>
+                            <option value="{{doctor._id}}" ng-repeat="doctor in doctorList">Dr. {{doctor.name}}</option>
+                        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Patient Name</label>
+      <div class="col-sm-10">
+        <select ng-model="name">
+                        <option value="">Select Patient</option>
+                        <option value="{{p._id}}" ng-repeat="p in patientList">{{p.name}}</option>
+                    </select>
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+
+      <label class="col-sm-2 control-label">Appointment Date</label>
+      <p class="input-group col-md-6">
+        <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" min-date="minDate"
+          datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="fa fa-calendar"></i></button>
+                  </span>
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Select Time</label>
+      <uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Appointment Type</label>
+      <div class="col-sm-10">
+        <select ng-model="appointmentType">
+                    <option value="normal">normal</option>
+                    <option value="emergency">emergency</option>
+                </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Notes</label>
+      <div class="col-sm-10">
+        <textarea type="text" class="form-control" id="inputEmail3" ng-model="notes"></textarea>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-success btn-ef btn-ef-3 btn-ef-3c" ng-click="ok()"><i class="fa fa-arrow-right"></i> Submit</button>
+  <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ng-click="cancel()"><i class="fa fa-arrow-left"></i> Cancel</button>
+</div>
+ </script>

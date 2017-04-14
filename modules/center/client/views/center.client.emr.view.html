@@ -1,0 +1,47 @@
+<div class="right-col clearfix">
+
+
+  <div class="col-xs-12">
+
+    <div class="close-left-menu">
+      <img src="../img/clode-icon.png">
+    </div>
+    <div class="col-md-12 patient-details ">
+      <div class="patient-profile  display-flex-center clearfix patient-profile-search" style="border-bottom:0px;">
+
+        <div class="fl col-xs-5  no-padding">
+          <div class="checkbox-inline">
+            <label>
+    <input type="checkbox" ng-true-value="true" ng-false-value="false"  ng-model="active"/> set default doctor for EMR 
+  </label>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+        <div class="col-xs-7 pull-right no-padding search-section">
+          <div class="pull-right">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="patient-section-view padding35 clearfix">
+
+
+      <ul class="nav nav-tabs">
+        <li ng-class="{active:isSet(1)}"><a showtab ui-sref='center.settings.emr.complaints' ng-click="setTab(1)">Complaints</a></li>
+        <li ng-class="{active:isSet(2)}"><a showtab ui-sref='center.settings.emr.observations' ng-click="setTab(2)">Observations</a></li>
+        <li ng-class="{active:isSet(3)}"><a showtab ui-sref='center.settings.emr.diagnoses' ng-click="setTab(3)">Diagnoses</a></li>
+        <li ng-class="{active:isSet(4)}"><a showtab ui-sref='center.settings.emr.investigations' ng-click="setTab(4)">Investigations</a></li>
+        <li ng-class="{active:isSet(5)}"><a showtab ui-sref='center.settings.emr.notes' ng-click="setTab(5)">Notes</a></li>
+        <li ng-class="{active:isSet(6)}"><a showtab ui-sref='center.settings.emr.filelabels' ng-click="setTab(6)">File Labels</a></li>
+        <li ng-class="{active:isSet(7)}"><a showtab ui-sref='center.settings.emr.vitals' ng-click="setTab(7)">Vital Signs</a></li>
+      </ul>
+      <!--Tab list-->
+      <!--Tab list End-->
+
+      <div ui-view></div>
+
+    </div>
+  </div>
+</div>

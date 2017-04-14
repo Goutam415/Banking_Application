@@ -1,0 +1,26 @@
+<div class="right-col">
+  <div class="close-left-menu">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </div>
+  <div class="col-md-12 patient-details">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row" style="border-bottom: 1px solid black initial;">
+          <p><b>Center Staff</b></p>
+        </div>
+        <ul class="nav nav-tabs">
+
+          <li ui-sref-active="active so-active super-active"><a ui-sref="center.settings.staff.managestaff" >Manage Staff</a></li>
+          <li ui-sref-active="active so-active super-active"><a ui-sref="center.settings.staff.staffNotification">Staff Notification</a></li>
+          <li ui-sref-active="active so-active super-active"><a ui-sref="center.settings.staff.doctorVisitTime" ng-click="getDoctor()">Doctors visit Timings</a></li>
+        </ul>
+        <div ui-view="staffsettings"></div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

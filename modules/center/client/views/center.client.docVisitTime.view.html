@@ -1,0 +1,83 @@
+
+<div class="row">
+  <div class="col-md-2">
+    <h5>Doctor visit Timings</h5></div>
+</div>
+
+<br/>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Sl.No</th>
+          <th>Name</th>
+          <th>Visit Timings</th>
+          <th></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <div>
+          <tr ng-repeat="doc in doctor track by $index">
+            <td>{{$index+1}}</td>
+            <td>Dr. {{doc.name | uppercase}}</td>
+             <td>
+              <div ng-repeat="time in doc.workingDays.monday.timing" class="row">
+                <p class="col-md-3">Monday:</p>
+                <p class="col-md-3" ng-bind-template="{{time.slot1.startTime}} to {{time.slot1.endTime}}"> </p>
+                <p class="col-md-3" ng-bind-template="{{time.slot2.startTime}} to {{ time.slot2.endTime}}"></p>
+              </div>
+
+              <div ng-repeat="time in doc.workingDays.tuesday.timing" class="row">
+                <p class="col-md-3">Tuesday:</p>
+                <p class="col-md-3" ng-bind-template="{{time.slot1.startTime}} to {{time.slot1.endTime}}"></p>
+                <p class="col-md-3" ng-bind-template= "{{time.slot2.startTime}} to {{ time.slot2.endTime}}"></p>
+              </div>
+
+              <div ng-repeat="time in doc.workingDays.wednesday.timing" class="row">
+                <p class="col-md-3">Wednesday:</p>
+                <p class="col-md-3" ng-bind-template="{{time.slot1.startTime}} to {{time.slot1.endTime}}"> </p>
+                <p class="col-md-3" ng-bind-template="{{time.slot2.startTime}} to {{ time.slot2.endTime}}"></p>
+              </div>
+
+              <div ng-repeat="time in doc.workingDays.thursday.timing" class="row">
+                <p class="col-md-3">Thursday:</p>
+                <p class="col-md-3" ng-bind-template="{{time.slot1.startTime}} to {{time.slot1.endTime}}"> </p>
+                <p class="col-md-3" ng-bind-template="{{time.slot2.startTime}} to {{ time.slot2.endTime}}"></p>
+              </div>
+
+              <div ng-repeat="time in doc.workingDays.friday.timing" class="row">
+                <p class="col-md-3">Friday:</p>
+                <p class="col-md-3" ng-bind-template="{{time.slot1.startTime}} to {{time.slot1.endTime}}"> </p>
+                <p class="col-md-3" ng-bind-template="{{time.slot2.startTime}} to {{ time.slot2.endTime}}"></p>
+              </div>
+
+              <div ng-repeat="time in doc.workingDays.saturday.timing" class="row">
+                <p class="col-md-3">Saturday:</p>
+                <p class="col-md-3" ng-bind-template="{{time.slot1.startTime}} to {{time.slot1.endTime}}"> </p>
+                <p class="col-md-3" ng-bind-template="{{time.slot2.startTime}} to {{ time.slot2.endTime}}"></p>
+              </div>
+
+              <div ng-repeat="time in doc.workingDays.sunday.timing" class="row">
+                <p class="col-md-3">Sunday:</p>
+                <p class="col-md-3" ng-bind-template="{{time.slot1.startTime}} to {{time.slot1.endTime}}"> </p>
+                <p class="col-md-3" ng-bind-template="{{time.slot2.startTime}} to {{ time.slot2.endTime}}"></p>
+              </div>
+
+
+            </td>
+            <!--<td><a ui-sref="center.doctortimimgs">edit</a></td>-->
+            <td><input type="button" ng-click="editTime(doc._id)" value="Edit" /></td>
+          </tr>
+        </div>
+      </tbody>
+    </table>
+
+    <div ng-show="doctor.length==0" class="row form-group">
+  <br/>
+    <label class="emptyMsg"><b>No Doctor's found</b></label>
+  </div>
+    
+  </div>
+</div>

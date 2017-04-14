@@ -1,0 +1,87 @@
+<br/>
+<br/>
+
+<div>
+  <div class="col-md-4">
+    <h5>Doctor Notifications</h5>
+  </div>
+  <br/>
+  <br/>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Doctor</th>
+        <th>Schedule SMS</th>
+        <th>Schedule Email</th>
+        <th>Confirmation Email</th>
+        <th>Confirmation SMS</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr ng-repeat="doc in doctor track by $index">
+        <td> Dr. {{doc.name | uppercase}} </td>
+        <td><input type="checkbox" ng-model="doc.scheduleSMS" ng-true-value="true" ng-false-value="false"></td>
+        <td><input type="checkbox" ng-model="doc.scheduleEmail" ng-true-value="true" ng-false-value="false"></td>
+        <td><input type="checkbox" ng-model="doc.confirmationemail" ng-true-value="true" ng-false-value="false"></td>
+        <td><input type="checkbox" ng-model="doc.confirmationSMS" ng-true-value="true" ng-false-value="false"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div ng-show="doctor.length==0" class="row form-group">
+  <br/>
+    <label class="emptyMsg"><b>No Doctor's found</b></label>
+  </div>
+<br/>
+  <div class="row form-group">
+    <center>
+    <input type="button" ng-click="doctorNotification()" value="Save" />
+    </center>
+    <div>
+
+<!--<input type="button" value="GET" ng-click="gettt()">-->
+<br/>
+<br/>
+
+<div>
+  <div class="col-md-4">
+    <h5>Staff Notifications</h5>
+  </div>
+  <br/>
+  <br/>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Staff</th>
+        <th>Schedule SMS</th>
+        <th>Schedule Email</th>
+        <th>Confirmation Email</th>
+        <th>Confirmation SMS</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="staf in staffs track by $index">
+        <td> {{staf.name}}</td>
+        <td><input type="checkbox" ng-model="staf.scheduleSMS" ng-true-value="true" ng-false-value="false"></td>
+        <td><input type="checkbox" ng-model="staf.scheduleEmail" ng-true-value="true" ng-false-value="false"></td>
+        <td><input type="checkbox" ng-model="staf.confirmationemail" ng-true-value="true" ng-false-value="false"></td>
+        <td><input type="checkbox" ng-model="staf.confirmationSMS" ng-true-value="true" ng-false-value="false"></td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+<div ng-show="staffs.length==0" class="row">
+    <br/>
+    <label class="emptyMsg"><b>No Staff found</b></label>
+  </div>
+<br/>
+<center>
+  <div class="row">
+    <input type="button" ng-click="staffNotification()" value="Save" />
+    <div>
+      <center/>

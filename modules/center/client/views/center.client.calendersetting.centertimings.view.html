@@ -1,0 +1,448 @@
+<div class="row centertimingsmargins">
+  <p><b>SET CENTER TIMINGS</b></p>
+</div>
+
+<div>
+  <div class="row">
+    <input type="checkbox" ng-model="firstDay"> Always Show today as first day on my Calendar
+  </div>
+  <br>
+  <div>
+    <label>Show Calendar slots of</label>
+    <select ng-model="slotTime">
+                        <option value="15 min">15 Min</option>
+                        <option value="30 min">30 Min</option>
+                      </select>
+  </div>
+
+  <br>
+  <div class="row">
+    <input type="checkbox" ng-model="visitingHr"> Visiting hours are not same for all working days in a week
+  </div>
+
+  <br>
+  <div>
+    <form>
+
+      <div><label for="group"><b>Monday</b></label></div>
+      <div class="row">
+        <div class="col-md-6">
+          <label class="checkbox-inline"><input type="checkbox" ng-model="practiceCheckedMon" ng-disabled="practiceSessionsMon">Center is open on Monday</label>
+        </div>
+        <div class="col-md-6"> 
+          <label class="checkbox-inline"><input type="checkbox" ng-model="practiceSessionsMon" ng-disabled="practiceCheckedMon"name="group">Center operated in two Sessions</label>
+        </div>
+      </div>
+      <br/>
+    </form>
+
+    <div ng-show="practiceCheckedMon">
+      <div class="row">
+
+        <label class="col-md-3">Center Opens at</label>
+        <div class="col-md-3">
+          <input type="text" ng-model="monday.slot.startTime" placeholder="HH:mm" class="timingwidth" pattern="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$">
+        </div>
+
+
+        <label class="col-md-3">Center Closes at</label>
+        <div class="col-md-3">
+          <input type="text" ng-model="monday.slot.endTime" placeholder="HH:mm" class="timingwidth" pattern="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$">
+        </div>
+      </div>
+    </div>
+
+
+    <div ng-show="practiceSessionsMon">
+      <div class="row">
+
+        <label class="col-md-3">Center Opens at</label>
+        <div class="col-md-3">
+          <input type="text" ng-model="monday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+        </div>
+
+        <label class="col-md-3">Lunch at</label>
+        <div class="col-md-3">
+          <input type="text" ng-model="monday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+
+        <label class="col-md-3">Resume at</label>
+        <div class="col-md-3">
+          <input type="text" ng-model="monday.slot1.startTime" placeholder="HH:mm" class="timingwidth">
+        </div>
+
+        <label class="col-md-3">Center Closes at</label>
+        <div class="col-md-3">
+          <input type="text" ng-model="monday.slot1.endTime" placeholder="HH:mm" class="timingwidth">
+
+        </div>
+      </div>
+    </div>
+ <br/>
+  </div>
+
+
+  <form>
+    <div><label for="group"><b>Tuesday</b></label></div>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceCheckedTue" ng-disabled="practiceSessionsTue" name="group">Center is open on Tuesday</label>
+      </div>
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceSessionsTue" ng-disabled="practiceCheckedTue" name="group">Center operated in two Sessions</label>
+      </div>
+    </div>
+  </form>
+  <br>
+
+  <div ng-show="practiceCheckedTue">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="tuesday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="tuesday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="practiceSessionsTue">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="tuesday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Lunch at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="tuesday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+
+      <label class="col-md-3">Resume at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="tuesday.slot1.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="tuesday.slot1.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <form>
+    <div><label for="group"><b>Wednesday</b></label></div>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceCheckedWed" ng-disabled="practiceSessionsWed" name="group">Center is open on Wednesday</label>
+      </div>
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceSessionsWed" ng-disabled="practiceCheckedWed" name="group">Center operated in two Sessions</label>
+      </div>
+    </div>
+  </form>
+  <br>
+
+  <div ng-show="practiceCheckedWed">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="wednesday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="wednesday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="practiceSessionsWed">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="wednesday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Lunch at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="wednesday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+
+      <label class="col-md-3">Resume at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="wednesday.slot1.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="wednesday.slot1.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <form>
+    <div><label for="group"><b>Thursday</b></label></div>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceCheckedThur" ng-disabled="practiceSessionsThur" name="group">Center is open on Thursday</label>
+      </div>
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceSessionsThur" ng-disabled="practiceCheckedThur" name="group">Center operated in two Sessions</label>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div ng-show="practiceCheckedThur">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="thursday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="thursday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="practiceSessionsThur">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="thursday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Lunch at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="wednesday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+
+      <label class="col-md-3">Resume at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="thursday.slot1.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="thursday.slot1.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <form>
+    <div><label for="group"><b>Friday</b></label></div>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceCheckedFri" ng-disabled="practiceSessionsFri" name="group">Center is open on Friday</label>
+      </div>
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceSessionsFri" ng-disabled="practiceCheckedFri" name="group">Center operated in two Sessions</label>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div ng-show="practiceCheckedFri">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="friday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="friday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="practiceSessionsFri">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="friday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Lunch at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="friday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+
+      <label class="col-md-3">Resume at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="friday.slot1.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="friday.slot1.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <form>
+    <div><label for="group"><b>Saturday</b></label></div>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceCheckedSat" ng-disabled="practiceSessionsSat" name="group">Center is open on Saturday</label>
+      </div>
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceSessionsSat" ng-disabled="practiceCheckedSat" name="group">Center operated in two Sessions</label>
+      </div>
+    </div>
+  </form>
+  <br>
+  <br>
+  <div ng-show="practiceCheckedSat">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="satuday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="saturday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="practiceSessionsSat">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="saturday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Lunch at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="saturday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+
+      <label class="col-md-3">Resume at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="saturday.slot1.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="saturday.slot1.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <form>
+    <div><label for="group"><b>Sunday</b></label></div>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceCheckedSun" ng-disabled="practiceSessionsSun" name="group">Center is open on Sunday</label>
+      </div>
+      <div class="col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" ng-model="practiceSessionsSun" ng-disabled="practiceCheckedSun" name="group">Center operated in two Sessions</label>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div ng-show="practiceCheckedSun">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="sunday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="sunday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="practiceSessionsSun">
+    <div class="row">
+
+      <label class="col-md-3">Center Opens at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="sunday.slot.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Lunch at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="sunday.slot.endTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+
+      <label class="col-md-3">Resume at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="sunday.slot1.startTime" placeholder="HH:mm" class="timingwidth">
+      </div>
+
+      <label class="col-md-3">Center Closes at</label>
+      <div class="col-md-3">
+        <input type="text" ng-model="sunday.slot1.endTime" placeholder="HH:mm" class="timingwidth">
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <center>
+      <input type="button" ng-model="centerTimings" ng-click="saveCenterTimings()" value="Save Timings">
+    </center>
+  </div>
+
+
+
+</div>

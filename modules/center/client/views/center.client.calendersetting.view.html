@@ -1,0 +1,38 @@
+<!--<header>
+         <div ng-include="'modules/center/client/views/center.client.head.html'"></div>
+      </header>-->
+
+
+  <div class="wrapper clearfix">
+    <div class="inner-container">
+
+           <!--<div ng-include="'modules/center/client/views/center.client.center_setting_menu_left.html'"></div>
+            <br>-->
+
+            <div class="right-col">
+              <div class="row">
+                <div style="border-bottom: 1px solid black initial;padding-left:15%">
+                    <p><b>Calendar</b></p>
+                    </div>
+
+                  <div class="col-md-8">
+                    <ul class="nav nav-tabs" style="padding-left: 20%" ng-model="selection">
+                    <li ui-sref-active="active so-active super-active"><a ui-sref="center.settings.calendar.centertimings">Center Timings</a></li>
+                    <li ui-sref-active="active so-active super-active"><a ui-sref="center.settings.calendar.appointment">Appointment Categories</a></li>
+                    <!--<li><a ui-sref="">Subscribe</a></li>-->
+                    </ul>
+                    <br/>
+
+                    <div ui-view ="calendarSettings" class="appcalendarPadding"></div>
+                    </div>
+                  </div>
+               </div>
+
+
+
+
+
+
+
+    </div>
+  </div>

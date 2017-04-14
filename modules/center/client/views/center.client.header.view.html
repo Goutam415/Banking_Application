@@ -1,0 +1,49 @@
+ <header>  
+   
+    <!--Top Menu Start-->
+    <div class="top-menu">
+      <div class="logo-section">
+        <a ui-sref="app.dashboard" class="white-color hover-white text-deco-none logo ">eManageHealth</a>
+      </div>
+      <div class="user-details-section">
+        <ul>
+          <li><a href=""><i class="fa fa-search fa-lg white-color"></i></a></li>
+          <li><a href=""><i class="fa fa-bell fa-lg white-color" aria-hidden="true"></i></a></li>
+          <li class="user-name-image">
+            <div class="circle-image"><img  class="circle-image" ng-src="{{globals.id}}.jpg" onerror="this.style.visibility='hidden'"/></div>
+            <div class="user-name">
+              <h6 class="white-color no-margin">Welcome</h6>
+              <h5 class="white-color no-margin">{{globals.name}}</h5>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown" >
+                 <button class="btn btn-primary"  type="button" id="btnLogout" ng-click="logout()">Logout</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!--Top Menu End Here-->
+
+    <!--Top Second Menu Start-->
+    <div class="top-second-menu">
+      <div class="col-md-3 dental-zone no-padding">
+        <i class="fa fa-medkit white-color fa-2x medi-kit" aria-hidden="true"></i>
+        <span class="white-color"><a ui-sref="centersetting" >{{globals.center}}</a></span>
+      </div>
+      <div class="col-md-6 second-small-menu no-padding">
+        <ul>
+          <li><i class="fa fa-calendar white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Calender" ui-sref="calender"></i></li>
+          <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="List"></i></button></li>
+          <li><i class="fa fa-comment white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Chat"></i></button></li>
+          <li><i class="fa fa-file-text-o white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="File" ></i></button></li>
+          <li><i class="fa fa-user white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Add Staff" ui-sref="staff" ng-click = "staffVm.getDoctor()"></i></button></li>
+
+        </ul>
+      </div>
+    </div>
+    <!--Top Second Menu End Here-->
+
+
+  </header>

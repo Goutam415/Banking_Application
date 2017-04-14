@@ -1,0 +1,67 @@
+<div class="container">
+  <form name="emr" role="form" style="margin-top:30px;" <form name="emr" role="form" style="margin-top:30px;" novalidate>
+    <flash-message></flash-message>
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="form-group">
+          <label class="sr-only" for="inputEmail"></label>
+          <input type="text" class="form-control" placeholder="" ng-model="newInvestigation" name="Investigation" ng-pattern="/^[a-zA-Z0-9]*$/"
+            required>
+          <div ng-messages="emr.Investigation.$error">
+            <div ng-message="pattern"> Special Characters and numbers are not allowed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" ng-click="addItem()">Add New</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="form-group">
+          <label class="sr-only" for="inputEmail"></label>
+          <input type="text" class="form-control" id="inputEmail" placeholder="search" ng-model="query">
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-repeat="aInvestigation in investigations | filter:query">
+      <div ng-if="aInvestigation.active">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label class="" for="inputEmail" ng-hide="currentEditIndex == $index">{{aInvestigation.name}}</label>
+            <div ng-show="currentEditIndex == $index" ng-model="aInvestigation.name"><input type="text" ng-model="aInvestigation.name" ng-disabled="inactive" /></div>
+          </div>
+        </div>
+
+        <div class="col-xs-7 col-xs-push-5">
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" ng-click="edit(aInvestigation,$index)" ng-hide="currentEditIndex == $index">Edit</button>
+            <button class="btn btn-danger" ng-show="currentEditIndex == $index" ng-click="cancel($index)">Cancel</button>
+            <button class="btn btn-primary" ng-show="currentEditIndex == $index" ng-click="save(aInvestigation, $index)" ng-disabled="aInvestigation.name.length == 0">Save</button>
+            <button class="btn btn-primary" ng-click="deleteItem(aInvestigation,$index)" ng-hide="currentEditIndex == $index">hide</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="border-bottom:1px solid black; width:80%;"> </div>
+    <div style="padding:3px"></div>
+    <div class="row" ng-repeat="inActiveIvestigation in inactivearray | filter:query">
+      <div ng-if="inActiveIvestigation.active==false">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label class="" ng-hide="currentEditIndex == $index">{{inActiveIvestigation.name}}</label>
+          </div>
+        </div>
+        <div class="col-xs-7 col-xs-push-5">
+          <div class="form-group">
+            <button class="btn btn-primary" ng-click="unhide(inActiveIvestigation,$index)" ng-hide="currentEditIndex == $index">Unhide</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
