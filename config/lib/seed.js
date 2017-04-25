@@ -11,6 +11,7 @@ const rolesData = require('../../db/populate/roles');
 
 const SMSData = require('../../db/populate/smsTemplate');
 const EmailData = require('../../db/populate/emailTemplate');
+const LoginDetails = require('../../db/populate/center.logindetails');
 
 // global seed options object
 var seedOptions = {};
@@ -36,11 +37,22 @@ var seedOptions = {};
   });
 
 } */
+function addLogin() {
+
+  var LoginDetail = mongoose.model('Logins');
+  LoginDetail.update({ user: LoginDetails.Logins.email, pass: LoginDetails.Logins.password }, LoginDetails.Logins, { upsert: true }, function(err) {
+    if (err) {
+      console.log('error while seeding permissions ');
+    } else {
+      console.log('seeding Login Details is successful');
+    }
+  });
+}
 
 function addPermissions() {
 
   var Permissions = mongoose.model('Permissions');
-  Permissions.update({ id: rolesData.permissions.id }, rolesData.permissions, { upsert: true }, function (err) {
+  Permissions.update({ id: rolesData.permissions.id }, rolesData.permissions, { upsert: true }, function(err) {
     if (err) {
       console.log('error while seeding permissions ');
     } else {
@@ -53,10 +65,11 @@ function addGroups() {
   var Groups = mongoose.model('Groups');
   var groupData = rolesData.groups;
   _.each(groupData, function(value, key) {
-    var group = { 'name': key,
-                  'permissions': value
-                };
-    Groups.update({ name: group.name }, group, { upsert: true }, function (err) {
+    var group = {
+      'name': key,
+      'permissions': value
+    };
+    Groups.update({ name: group.name }, group, { upsert: true }, function(err) {
       if (err) {
         console.log(' error while adding groups');
       } else {
@@ -72,7 +85,7 @@ function addRoles() {
   var Roles = mongoose.model('Roles');
   var roleData = rolesData.roles;
   _.each(roleData, function(role, index) {
-    Roles.update({ name: role.name }, role, { upsert: true }, function (err) {
+    Roles.update({ name: role.name }, role, { upsert: true }, function(err) {
       if (err) {
         console.log(' error while adding roles');
       } else {
@@ -128,6 +141,7 @@ module.exports.start = function start(options) {
     seedOptions.logResults = options.logResults;
   }
   // saveSalesAdmin();
+  addLogin();
   addPermissions();
   addGroups();
   addRoles();

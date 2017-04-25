@@ -1,15 +1,14 @@
-
 exports.permissions = {
   id: 1,
   permissions: ['login',
-                'update:profile',
-                'read:calender',
-                'create:booking',
-                'update:calender',
-                'update:center',
-                'access:center',
-                'update:center:logo'
-              ]
+    'update:profile',
+    'read:calender',
+    'create:booking',
+    'update:calender',
+    'update:center',
+    'access:center',
+    'update:center:logo'
+  ]
 };
 
 exports.groups = {
@@ -33,6 +32,10 @@ exports.roles = [{
   'permissions': ['update:center:logo']
 }, {
   'name': 'admin',
+  'groups': ['basic', 'calender-read', 'calender-write', 'center-admin'],
+  'permissions': []
+}, {
+  'name': 'emanagehealth@gmail.com',
   'groups': ['basic', 'calender-read', 'calender-write', 'center-admin'],
   'permissions': []
 }];

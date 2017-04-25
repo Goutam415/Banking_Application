@@ -1,4 +1,3 @@
-
 // use strict
 var logger = require('winston'),
   path = require('path'),
@@ -24,8 +23,8 @@ exports.validteLoginParams = {
 /**
  * login to center portal
  */
-exports.login = function (req, res, next) {
-  passport.authenticate('local-center', function (err, user, info) {
+exports.login = function(req, res, next) {
+  passport.authenticate('local-center', function(err, user, info) {
     if (err || !user) {
       res.status(400).send(info);
     } else {
@@ -34,24 +33,24 @@ exports.login = function (req, res, next) {
       user.password = undefined;
       user.salt = undefined;
       // fetch permissions data for the user
-      rolesController.getPermessionsByRoles(user.role.toObject(), function(err, data) {
-        if (err && !data) {
-          logger.info('unable to get permissions');
-          user.permissions = 'error while loading permissions try again';
+      // rolesController.getPermessionsByRoles(user.role.toObject(), function(err, data) {
+      //   if (err && !data) {
+      //     logger.info('unable to get permissions');
+      //     user.permissions = 'error while loading permissions try again';
+      //   } else {
+      //     user.permissions = data;
+      //   }
+
+      req.session.userDetails = user;
+      // req.session.userDetails.defaultCenter = user.centerIds[0]._id;
+
+      req.login(user, function(err) {
+        if (err) {
+          res.status(400).send(err);
         } else {
-          user.permissions = data;
+          res.json({ status: 'success' });
         }
-
-        req.session.userDetails = user;
-       // req.session.userDetails.defaultCenter = user.centerIds[0]._id;
-
-        req.login(user, function (err) {
-          if (err) {
-            res.status(400).send(err);
-          } else {
-            res.json({ status: 'success' });
-          }
-        });
+        // });
       });
     }
   })(req, res, next);
@@ -238,23 +237,23 @@ exports.updateProfileImage = function(req, res, next) {
 
   // Save decoded binary image to disk
   require('fs').writeFile(path.join(__dirname, '../../../../public/uploads/' + req.body.id + '.jpg'), imageBuffer.data,
-                function(err) {
-                  if (err) {
-                    res.status(400).send({
-                      status: 'error',
-                      msg: 'something went wrong while uploading image'
-                    });
-                  } else {
-                    Staff.update({ _id: req.body.id }, { pic: req.body.id + '.jpg' }, function(err, doc) {
-                      console.log(err);
-                    });
-                    res.status(200).send({
-                      status: 'success',
-                      msg: 'image uploaded'
-                    });
+    function(err) {
+      if (err) {
+        res.status(400).send({
+          status: 'error',
+          msg: 'something went wrong while uploading image'
+        });
+      } else {
+        Staff.update({ _id: req.body.id }, { pic: req.body.id + '.jpg' }, function(err, doc) {
+          console.log(err);
+        });
+        res.status(200).send({
+          status: 'success',
+          msg: 'image uploaded'
+        });
 
-                  }
-                });
+      }
+    });
 };
 /**
  * validation for updaate center timings
@@ -302,8 +301,8 @@ exports.updateCenterTime = function(req, res, next) {
       res.status(403).send({ status: 'failure', message: err });
     } else {
       logger.info('center: settings : update EMR: success');
-        // delete data._doc._id;
-        // delete data._doc.__v;
+      // delete data._doc._id;
+      // delete data._doc.__v;
       res.status(200).send({ status: 'success', data: data });
     }
   });
