@@ -1,76 +1,75 @@
 <div>
-  <header ng-hide="authenticated">
-    <!--Top Menu Start-->
-    <div class="top-menu top-menu-login">
-      <div class="logo-section">
-        <a ui-sref="app.dashboard" class="white-color hover-white text-deco-none logo ">eManageHealth</a>
-      </div>
-      <div class="login-menu height pull-right">
-        <ul class="height no-margin no-padding">
-          <li><a href="">Home</a></li>
-          <li><a href="">Help</a></li>
-          <li><a href="">Contact</a></li>
-        </ul>
-      </div>
+    <header ng-hide="authenticated">
+        <!--Top Menu Start-->
+        <div class="top-menu top-menu-login">
+            <div class="logo-section">
+                <a ui-sref="app.dashboard" class="white-color hover-white text-deco-none logo ">trueapps </a>
+            </div>
+            <div class="login-menu height pull-right">
+                <ul class="height no-margin no-padding">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Help</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
 
+        </div>
+        <!--Top Menu End Here-->
+    </header>
+
+
+    <!--Top Menu Start-->
+    <div class="top-menu" ng-show="authenticated">
+        <div class="logo-section">
+            <a ui-sref="app.dashboard" class="white-color hover-white text-deco-none logo ">trueapps </a>
+        </div>
+        <div class="user-details-section">
+            <ul>
+                <li><a href=""><i class="fa fa-search fa-lg white-color"></i></a></li>
+                <li><a href=""><i class="fa fa-bell fa-lg white-color" aria-hidden="true"></i></a></li>
+                <li><a ui-sref="center.settings.centerinfo"><i class="fa fa-cog fa-lg white-color" aria-hidden="true"></i></a></li>
+                <li class="user-name-image">
+                    <div class="circle-image"><img class="circle-image" ng-src="{{auth_data.id}}.jpg" onerror="this.style.visibility='hidden'" /></div>
+                    <div class="user-name">
+                        <h6 class="white-color no-margin">Welcome</h6>
+                        <h5 class="white-color no-margin">{{auth_data.name}}</h5>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-primary" type="button" id="btnLogout" ng-click="logout()">Logout</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
     <!--Top Menu End Here-->
-  </header>
 
-
-  <!--Top Menu Start-->
-  <div class="top-menu" ng-show="authenticated">
-    <div class="logo-section">
-      <a ui-sref="app.dashboard" class="white-color hover-white text-deco-none logo ">eManageHealth</a>
-    </div>
-    <div class="user-details-section">
-      <ul>
-        <li><a href=""><i class="fa fa-search fa-lg white-color"></i></a></li>
-        <li><a href=""><i class="fa fa-bell fa-lg white-color" aria-hidden="true"></i></a></li>
-        <li><a ui-sref="center.settings.centerinfo"><i class="fa fa-cog fa-lg white-color" aria-hidden="true"></i></a></li>
-        <li class="user-name-image">
-          <div class="circle-image"><img class="circle-image" ng-src="{{auth_data.id}}.jpg" onerror="this.style.visibility='hidden'" /></div>
-          <div class="user-name">
-            <h6 class="white-color no-margin">Welcome</h6>
-            <h5 class="white-color no-margin">{{auth_data.name}}</h5>
-          </div>
-        </li>
-        <li>
-          <div class="dropdown">
-            <button class="btn btn-primary" type="button" id="btnLogout" ng-click="logout()">Logout</button>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!--Top Menu End Here-->
-
-  <!--Top Second Menu Start-->
-  <div class="top-second-menu">
-    <div class="col-md-3 dental-zone no-padding">
-      <i class="fa fa-medkit white-color fa-2x medi-kit" aria-hidden="true"></i>
-      <span>
+    <!--Top Second Menu Start-->
+    <div class="top-second-menu">
+        <div class="col-md-3 dental-zone no-padding">
+            <i class="fa fa-medkit white-color fa-2x medi-kit" aria-hidden="true"></i>
+            <span>
         <select ng-model="currentCenter" ng-change="setId(currentCenter)"
          ng-options="currentCenter.centerName for currentCenter in auth_data.centerIds track by currentCenter._id" >
         </select>
         </span>
+        </div>
+        <div class="col-md-6 second-small-menu no-padding">
+            <ul>
+                <li><i class="fa fa-calendar white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Calender" ui-sref="calender"></i></li>
+                <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="List"></i></button>
+                </li>
+                <li><i class="fa fa-comment white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Chat"></i></button>
+                </li>
+                <li><i class="fa fa-file-text-o white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="File"></i></button>
+                </li>
+                <li><i class="fa fa-user white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Add Staff" ui-sref="center.settings.staff.managestaff"></i></button>
+                </li>
+                <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Records" ui-sref="center.consultation.patientlist"></i></button>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col-md-6 second-small-menu no-padding">
-      <ul>
-        <li><i class="fa fa-calendar white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Calender"
-            ui-sref="calender"></i></li>
-        <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="List"></i></button>
-        </li>
-        <li><i class="fa fa-comment white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Chat"></i></button>
-        </li>
-        <li><i class="fa fa-file-text-o white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="File"></i></button>
-        </li>
-        <li><i class="fa fa-user white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Add Staff"
-            ui-sref="center.settings.staff.managestaff"></i></button>
-        </li>
-        <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Records" ui-sref="center.consultation.patientlist" ></i></button></li>
-      </ul>
-    </div>
-  </div>
-  <!--Top Second Menu End Here-->
+    <!--Top Second Menu End Here-->
 </div>

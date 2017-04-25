@@ -1,6 +1,4 @@
-
-var patients = [
-  {
+var patients = [{
     'userID': 'saurabh.simpyD7qba3kkqi',
     'name': 'Saurabh Jha',
     'ownerID': '572dae73f424fc4413486a5d',
@@ -71,10 +69,11 @@ var Patient = require(path.join(__dirname, '/server/models/Patient'));
 var config = require(path.join(__dirname, '/server/config/config.js'));
 var _db = mongoose.createConnection(config.patientConfig.mongo_url);
 _db.useDb(config.patientConfig.db);
+
 function addPatients() {
   for (var i = 0; i < patients.length; i++) {
     var aPtaient = patients[i];
-    Patient.createPatient(aPtaient, function (status, data) {
+    Patient.createPatient(aPtaient, function(status, data) {
       if (status) {
         console.log('successsfully added patient');
       } else {
@@ -93,11 +92,12 @@ var share_password_email_template = {
   'templateID': 'password_sharing',
   'type': 'email',
   'subject': 'Your login credentials',
-  'content': 'Hi nameval,\nWelcome to eManageHealth.\npassword:passwordval\n\n\nThanks,\neManageHealth Team'
+  'content': 'Hi nameval,\nWelcome to trueapps .\npassword:passwordval\n\n\nThanks,\ntrueapps  Team'
 };
 var Media = require(path.join(__dirname, '/server/models/media'));
+
 function addSharePasswordEmailTemplate() {
-  Media.template.createTemplate(share_password_email_template, function (status, data) {
+  Media.template.createTemplate(share_password_email_template, function(status, data) {
     if (status) {
       console.log('successsfully added template');
     } else {
@@ -111,15 +111,14 @@ addSharePasswordEmailTemplate();
 var Account = require(path.join(__dirname, 'server/models/account'));
 var password = '123456';
 mongoose.connect(config.mongo_url);
-var user = new Account({ name: 'emenage', email: 'emanage@gmail.com', mobile: '7406446615', role: 'Admin', owner: '1', pin: '1234', isOwner: true, center: 'abc', _id: '572dae73f424fc4413486a5d' });
+var user = new Account({ name: 'emenage', email: 'trueapps@gmail.com', mobile: '7406446615', role: 'Admin', owner: '1', pin: '1234', isOwner: true, center: 'abc', _id: '572dae73f424fc4413486a5d' });
 
 function create_customer() {
   console.log('creating customer');
-  Account.register(user, password, function (error, account) {
+  Account.register(user, password, function(error, account) {
     if (error) {
       console.log(error);
-    }
-    else {
+    } else {
       console.log('creted');
     }
     return;
@@ -131,14 +130,14 @@ create_customer();
 
 
 var doctorList = [{
-  docname: 'Ankit Goel',
-  emaildid: 'ankit89m@gmail.com',
-  mobile: '9036163563',
-  regno: '1234567890',
-  calcolor: 'red',
-  role: 'doctor',
-  pcenter: 'abc'
-},
+    docname: 'Ankit Goel',
+    emaildid: 'ankit89m@gmail.com',
+    mobile: '9036163563',
+    regno: '1234567890',
+    calcolor: 'red',
+    role: 'doctor',
+    pcenter: 'abc'
+  },
   {
     docname: 'Ratikanta Patra',
     emaildid: 'iratikanta.patra@gmail.com',
@@ -164,12 +163,13 @@ var doctorList = [{
 var cost_details = {
   'templateID': 'cost_details',
   'type': 'email',
-  'subject': 'Welcome to eManageHealth',
-  'content': 'Hello titleval nameval,\nWelcome to eManageHealth.Thank you for enrolling with us.\nYou have subscribed plan_nameval with us.\n\nCost details:\nBase price base_priceval\nService Tax servicetax_percentval servicetax_costval\nVAT vat_percentval vat_costval\nTotal Cost total_costval\nYour credential will reach sortly on your email address.\n\nThanks\neManagehealth Team'
+  'subject': 'Welcome to trueapps ',
+  'content': 'Hello titleval nameval,\nWelcome to trueapps .Thank you for enrolling with us.\nYou have subscribed plan_nameval with us.\n\nCost details:\nBase price base_priceval\nService Tax servicetax_percentval servicetax_costval\nVAT vat_percentval vat_costval\nTotal Cost total_costval\nYour credential will reach sortly on your email address.\n\nThanks\ntrueapps  Team'
 
 };
+
 function addTemplate(data) {
-  Media.template.createTemplate(data, function (status, data) {
+  Media.template.createTemplate(data, function(status, data) {
     if (status) {
       console.log('successsfully added template');
     } else {
@@ -179,9 +179,3 @@ function addTemplate(data) {
 }
 
 addTemplate(cost_details);
-
-
-
-
-
-

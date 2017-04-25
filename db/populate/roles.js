@@ -35,7 +35,7 @@ exports.roles = [{
   'groups': ['basic', 'calender-read', 'calender-write', 'center-admin'],
   'permissions': []
 }, {
-  'name': 'emanagehealth@gmail.com',
+  'name': 'trueapps@gmail.com',
   'groups': ['basic', 'calender-read', 'calender-write', 'center-admin'],
   'permissions': []
 }];

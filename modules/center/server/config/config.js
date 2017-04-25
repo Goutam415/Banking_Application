@@ -128,7 +128,7 @@ module.exports = {
     views: ['modules/*/client/views/**/*.html']
   },
   centerConfig: {
-    'mongo_url': 'mongodb://localhost/emanagehealth',
-    'db': 'emanagehealth'
+    'mongo_url': 'mongodb://localhost/trueapps ',
+    'db': 'trueapps '
   }
 };

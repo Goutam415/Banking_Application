@@ -313,7 +313,7 @@ exports.updateCenterTime = function(req, res, next) {
  */
 function getStaffEmailParams(staff) {
   var password = staff.origianlPassword;
-  var content = '<b>Congrats, Your Registration is successfull on eManageHealth!!!!</b><br/>password: ' + password;
+  var content = '<b>Congrats, Your Registration is successfull on trueapps !!!!</b><br/>password: ' + password;
   var subject = 'Congrats ' + staff.name + ' , Your Registration is successfull';
   var email = staff.email;
 
