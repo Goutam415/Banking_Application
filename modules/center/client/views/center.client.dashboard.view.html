@@ -1,44 +1,56 @@
 <!--Right container-->
-      <div class="right-col">
-        <div class="close-left-menu">
-          <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        </div>
-        <div class="col-md-9 patient-details">
-          <div class="patient-profile">
+<div class="right-col">
+    <div class="close-left-menu">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </div>
+    <div class="col-md-9 patient-details">
+        <div class="patient-profile">
             <h4>My Profile</h4>
-          </div>
-          <div class="personal-details clearfix">
+        </div>
+        <div class="personal-details clearfix">
             <h4 class="no-margin green-color">Personal Details</h4>
             <div class="col-md-10 no-padding patient-details-single">
-              <div class="patient-image" >
-                 <div class='photos fa fa-plus-circle' id='{{capturedImages.id}}'>
+                <div class="patient-image">
+                    <div class='photos fa fa-plus-circle' id='{{capturedImages.id}}'>
                         <input type="file" accept="image/*;capture=camera" onchange="angular.element(this).scope().handleImage(this)">
-                        <div class='img-wrapper fa fa-minus-circle' ng-class="{'show':capturedImages.show}" ng-click="remImg(capturedImages)" > <!--  -->
-                            <img src="/uploads/{{user._id}}.jpg" alt="" class="showcase"/>
-                            <img class="showcase" ng-src='{{capturedImages.base64}}' altSrc="{{}}">                       </div>
+                        <div class='img-wrapper fa fa-minus-circle' ng-class="{'show':capturedImages.show}" ng-click="remImg(capturedImages)">
+                            <!--  -->
+                            <img src="/uploads/{{user._id}}.jpg" alt="" class="showcase" />
+                            <img class="showcase" ng-src='{{capturedImages.base64}}' altSrc="{{}}"> </div>
                     </div>
-              </div>
-              <div class="name-details name-details-personal">
-                <div class="col-md-5"><h6>Name</h6></div>
-                <div class="col-md-6"><p>{{user.name}}</p></div>
-                <div class="col-md-5"><h6>Email ID</h6></div>
-                <div class="col-md-6"><p>{{user.email}}</p></div>
-                <div class="col-md-5"><h6>Phone Number</h6></div>
-                <div class="col-md-6"><p>{{user.mobile}}</p></div>
-               <!-- <div class="col-md-5"><h6>Address</h6></div>
+                </div>
+                <div class="name-details name-details-personal">
+                    <div class="col-md-5">
+                        <h6>Name</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{user.name}}</p>
+                    </div>
+                    <div class="col-md-5">
+                        <h6>Email ID</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{user.email}}</p>
+                    </div>
+                    <div class="col-md-5">
+                        <h6>Phone Number</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{user.mobile}}</p>
+                    </div>
+                    <!-- <div class="col-md-5"><h6>Address</h6></div>
                 <div class="col-md-6"><p>{{globals.address1}}</p></div>-->
-              </div>
-              <div class="col-md-5">
-              <input type="button" class="btn btn-default" value="update" ng-click="updateProfile()">
-              <!-- <input type="button" ui-sref="editCustomer" class="btn btn-default" value="edit" ng-click="editProfile()">
+                </div>
+                <div class="col-md-5">
+                    <input type="button" class="btn btn-default" value="update" ng-click="updateProfile()">
+                    <!-- <input type="button" ui-sref="editCustomer" class="btn btn-default" value="edit" ng-click="editProfile()">
                 -->
-              </div>
+                </div>
             </div>
-          </div>
-          
-
         </div>
-        
-      </div>
-      <!--Right Container end Here-->
-    
+
+
+    </div>
+
+</div>
+<!--Right Container end Here-->

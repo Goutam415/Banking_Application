@@ -40,7 +40,7 @@ var seedOptions = {};
 function addLogin() {
 
   var LoginDetail = mongoose.model('Logins');
-  LoginDetail.update({ user: LoginDetails.Logins.email, pass: LoginDetails.Logins.password }, LoginDetails.Logins, { upsert: true }, function(err) {
+  LoginDetail.update({}, LoginDetails.Logins, { upsert: true }, function(err) {
     if (err) {
       console.log('error while seeding permissions ');
     } else {
