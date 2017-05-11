@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
   'use strict';
 
   var applicationModuleName = 'center';
@@ -6,17 +6,18 @@
   var service = {
     applicationModuleName: applicationModuleName,
     applicationModuleVendorDependencies: ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ngStorage', 'ngFlash', 'ui.mention', 'ngSanitize',
-    'ngTouch',
-    'ngMessages',
-    'picardy.fontawesome',
-    'ui.bootstrap',
-    'ui.utils',
-    'angular-loading-bar',
-    'ui.sortable',
-    'ui.select',
-    'ui.calendar',
-    'ngMaterial',
-    'ngLodash'],
+      'ngTouch',
+      'ngMessages',
+      'picardy.fontawesome',
+      'ui.bootstrap',
+      'ui.utils',
+      'angular-loading-bar',
+      'ui.sortable',
+      'ui.select',
+      'ui.calendar',
+      'ngMaterial',
+      'ngLodash'
+    ],
     registerModule: registerModule
   };
 

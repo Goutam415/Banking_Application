@@ -20,56 +20,58 @@
 
     <!--Top Menu Start-->
     <div class="top-menu" ng-show="authenticated">
-        <div class="logo-section">
-            <a ui-sref="app.dashboard" class="white-color hover-white text-deco-none logo ">trueapps </a>
-        </div>
-        <div class="user-details-section">
-            <ul>
-                <li><a href=""><i class="fa fa-search fa-lg white-color"></i></a></li>
-                <li><a href=""><i class="fa fa-bell fa-lg white-color" aria-hidden="true"></i></a></li>
-                <li><a ui-sref="center.settings.centerinfo"><i class="fa fa-cog fa-lg white-color" aria-hidden="true"></i></a></li>
-                <li class="user-name-image">
-                    <div class="circle-image"><img class="circle-image" ng-src="{{auth_data.id}}.jpg" onerror="this.style.visibility='hidden'" /></div>
-                    <div class="user-name">
-                        <h6 class="white-color no-margin">Welcome</h6>
-                        <h5 class="white-color no-margin">{{auth_data.email}}</h5>
-                    </div>
-                </li>
-                <li>
-                    <div class="dropdown">
-                        <button class="btn btn-primary" type="button" id="btnLogout" ng-click="logout()">Logout</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!--Top Menu End Here-->
+        <md-toolbar id="top-tool-bar" class="md-whiteframe-1dp md-raised md-toolbar-tools toolbarss">
 
-    <!--Top Second Menu Start-->
-    <div class="top-second-menu">
-        <div class="col-md-3 dental-zone no-padding">
-            <i class="fa fa-medkit white-color fa-2x medi-kit" aria-hidden="true"></i>
-            <span>
+            <a class="md-warn"><b>Banking</b><span class="md-warn" > App</span></a>
+            <span flex></span>
+            <form ng-submit="$event.preventDefault()" flex>
+                <md-autocomplete md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)"
+                    md-item-text="item.display" md-min-length="0" placeholder="What is your favorite subject?">
+                    <md-item-template>
+                        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No states matching "{{ctrl.searchText}}" were found.
+                        <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+                    </md-not-found>
+                </md-autocomplete>
+            </form>
+
+            <span flex></span>
+
+            <md-icon md-svg-src="img/icons/ic_account_circle_black_24px.svg" class="s24" aria-label="Account"></md-icon>
+
+            <span class="md-body-2" style="color:black">{{auth_data.email}}</span>
+            <md-button class="md-primary">LogOut</md-button>
+            <md-button class="md-raised md-warn" ng-click="createNotes($event)">New</md-button>
+        </md-toolbar>
+        <!--Top Menu End Here-->
+
+        <!--Top Second Menu Start-->
+        <!--<div class="top-second-menu">
+            <div class="col-md-3 dental-zone no-padding">
+                <i class="fa fa-medkit white-color fa-2x medi-kit" aria-hidden="true"></i>
+                <span>
         <select ng-model="currentCenter" ng-change="setId(currentCenter)"
          ng-options="currentCenter.centerName for currentCenter in auth_data.centerIds track by currentCenter._id" >
         </select>
         </span>
-        </div>
-        <div class="col-md-6 second-small-menu no-padding">
-            <ul>
-                <li><i class="fa fa-calendar white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Calender" ui-sref="calender"></i></li>
-                <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="List"></i></button>
-                </li>
-                <li><i class="fa fa-comment white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Chat"></i></button>
-                </li>
-                <li><i class="fa fa-file-text-o white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="File"></i></button>
-                </li>
-                <li><i class="fa fa-user white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Add Staff" ui-sref="center.settings.staff.managestaff"></i></button>
-                </li>
-                <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Records" ui-sref="center.consultation.patientlist"></i></button>
-                </li>
-            </ul>
-        </div>
+            </div>
+            <div class="col-md-6 second-small-menu no-padding">
+                <ul>
+                    <li><i class="fa fa-calendar white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Calender" ui-sref="calender"></i></li>
+                    <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="List"></i></button>
+                    </li>
+                    <li><i class="fa fa-comment white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Chat"></i></button>
+                    </li>
+                    <li><i class="fa fa-file-text-o white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="File"></i></button>
+                    </li>
+                    <li><i class="fa fa-user white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Add Staff" ui-sref="center.settings.staff.managestaff"></i></button>
+                    </li>
+                    <li><i class="fa fa-list white-color" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Records" ui-sref="center.consultation.patientlist"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+        <!--Top Second Menu End Here-->
     </div>
-    <!--Top Second Menu End Here-->
-</div>
