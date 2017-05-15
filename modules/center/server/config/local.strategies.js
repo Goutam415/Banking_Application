@@ -29,9 +29,9 @@ module.exports = function(app, db) {
   });
 
   passport.use('local-center', new LocalStrategy({
-      usernameField: 'email',
-      passwordField: 'password'
-    },
+    usernameField: 'email',
+    passwordField: 'password'
+  },
     function(username, password, done) {
       Logins.findOne({
         email: username.toLowerCase()

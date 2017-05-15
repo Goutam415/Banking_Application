@@ -1,4 +1,4 @@
-(function (app) {
+(function(app) {
   'use strict';
 
   // Start by defining the main module and adding the module dependencies

@@ -6,7 +6,6 @@
   var service = {
     applicationModuleName: applicationModuleName,
     applicationModuleVendorDependencies: ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ngStorage', 'ngFlash', 'ui.mention', 'ngSanitize',
-      'ngTouch',
       'ngMessages',
       'picardy.fontawesome',
       'ui.bootstrap',

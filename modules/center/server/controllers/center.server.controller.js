@@ -32,6 +32,7 @@ exports.login = function(req, res, next) {
       // Remove sensitive data before login
       user.password = undefined;
       user.salt = undefined;
+      var a = user.email;
       // fetch permissions data for the user
       // rolesController.getPermessionsByRoles(user.role.toObject(), function(err, data) {
       //   if (err && !data) {

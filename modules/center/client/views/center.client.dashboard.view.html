@@ -1,53 +1,67 @@
-<!--Right container-->
-<div class="right-col">
-    <div class="col-md-9 patient-details">
-        <div class="patient-profile">
-            <h4>My Profile</h4>
+<div class="row">
+<div class="dashboard-properties">
+        <div class="col-md-4 col-sm-offset-3">
+            <div class="card-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="http://www.hdimageson.com/wp-content/uploads/2016/05/beach-images-tumblr-300x188.jpg"/>
+                        </div>
+                        <div class="user">
+                            <img class="img-circle" src="https://1.bp.blogspot.com/-aruLLVlXyJM/V_t-TxTncZI/AAAAAAAAJ3k/hnQKKVmKuOY_awf1nHGTsukGfw4qrde-gCLcB/s400/2.jpg"/>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">{{user.FirstName}}</h3>
+                                <p class="profession">{{user.Designation}}</p>
+
+                                <p class="text-center">Middle Name: {{user.MiddleName}}              Last Name: {{user.LastName}}</p>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h4 class="text-center">Job Description</h4>
+                                <p class="text-center">{{user.JobDescription}}</p>
+
+                                <div class="stats-container">
+                                    <div class="stats">
+                                        <h4>{{user.DateOfJoining}}</h4>
+                                        <p>
+                                            Date Of Joining
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>{{user.JoiningDay}}</h4>
+                                        <p>
+                                            Joining Day
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>{{user.Phone}}</h4>
+                                        <p>
+                                            Contact Info
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="social-links text-center">
+                                <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col-sm-3 -->
         </div>
-        <div class="personal-details clearfix">
-            <h4 class="no-margin green-color">Personal Details</h4>
-            <div class="col-md-10 no-padding patient-details-single">
-                <div class="patient-image">
-                    <div class='photos fa fa-plus-circle' id='{{capturedImages.id}}'>
-                        <input type="file" accept="image/*;capture=camera" onchange="angular.element(this).scope().handleImage(this)">
-                        <div class='img-wrapper fa fa-minus-circle' ng-class="{'show':capturedImages.show}" ng-click="remImg(capturedImages)">
-                            <!--  -->
-                            <img src="/uploads/{{user._id}}.jpg" alt="" class="showcase" />
-                            <img class="showcase" ng-src='{{capturedImages.base64}}' altSrc="{{}}"> </div>
-                    </div>
-                </div>
-                <div class="name-details name-details-personal">
-                    <div class="col-md-5">
-                        <h6>Name</h6>
-                    </div>
-                    <div class="col-md-6">
-                        <p>{{user.name}}</p>
-                    </div>
-                    <div class="col-md-5">
-                        <h6>Email ID</h6>
-                    </div>
-                    <div class="col-md-6">
-                        <p>{{user.email}}</p>
-                    </div>
-                    <div class="col-md-5">
-                        <h6>Phone Number</h6>
-                    </div>
-                    <div class="col-md-6">
-                        <p>{{user.mobile}}</p>
-                    </div>
-                    <!-- <div class="col-md-5"><h6>Address</h6></div>
-                <div class="col-md-6"><p>{{globals.address1}}</p></div>-->
-                </div>
-                <div class="col-md-5">
-                    <input type="button" class="btn btn-default" value="update" ng-click="updateProfile()">
-                    <!-- <input type="button" ui-sref="editCustomer" class="btn btn-default" value="edit" ng-click="editProfile()">
-                -->
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-
+<div class="background"></div>
 </div>
-<!--Right Container end Here-->

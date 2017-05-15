@@ -1,12 +1,33 @@
 (function () {
   angular.module('center').controller('dashboardController', ['$scope', 'Auth', '$localStorage', '$state', '$rootScope', 'Flash', 'centerService', 'StaffService',
   function ($scope, Auth, $localStorage, $state, $rootScope, Flash, centerService, StaffService) {
+    // Dashboard functions start here
+    $().ready(function() {
+      $('[rel="tooltip"]').tooltip();
+
+    });
+
+    function rotateCard(btn) {
+      var $card = $(btn).closest('.card-container');
+      console.log($card);
+      if ($card.hasClass('hover')) {
+        $card.removeClass('hover');
+      } else {
+        $card.addClass('hover');
+      }
+    }
+
+    // Dashboard functions end here
+
+
     console.log('dashboard controller');
     Auth.getUser().then(function(res) {
       $scope.user = res.data;
+      console.log(res.data);
      // console.log($scope.user);
      // Auth.setCenterId(res.data.centerIds[0]._id);
     });
+    
     $scope.capturedImages = {
       'id': 0,
       'show': false,

@@ -20,9 +20,9 @@
 
     <!--Top Menu Start-->
     <div class="top-menu" ng-show="authenticated">
-        <md-toolbar id="top-tool-bar" class="md-whiteframe-1dp md-raised md-toolbar-tools toolbarss">
+        <md-toolbar id="top-tool-bar" class="md-whiteframe-1dp md-raised md-toolbar-tools">
 
-            <a class="md-warn"><b>Banking</b><span class="md-warn" > App</span></a>
+            <a ui-sref="app.dashboard"><b>BankingApp</b></a>
             <span flex></span>
             <form ng-submit="$event.preventDefault()" flex>
                 <md-autocomplete md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)"
@@ -39,11 +39,11 @@
 
             <span flex></span>
 
-            <md-icon md-svg-src="img/icons/ic_account_circle_black_24px.svg" class="s24" aria-label="Account"></md-icon>
-
-            <span class="md-body-2" style="color:black">{{auth_data.email}}</span>
-            <md-button class="md-primary">LogOut</md-button>
-            <md-button class="md-raised md-warn" ng-click="createNotes($event)">New</md-button>
+            
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span class="md-body-2">{{auth_data.email}}</span>
+            <md-button>LogOut</md-button>
+            <md-button class="md-raised" ng-click="createNotes($event)">New</md-button>
         </md-toolbar>
         <!--Top Menu End Here-->
 

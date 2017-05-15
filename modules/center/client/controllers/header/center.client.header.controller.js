@@ -1,7 +1,7 @@
 (function() {
   angular.module('center').controller('headerController', ['$scope', 'Auth', '$localStorage', '$state', '$rootScope', '$filter', '$window',
     function($scope, Auth, $localStorage, $state, $rootScope, $filter, $window) {
-      console.log("Header controller");
+      console.log('Header controller');
       $scope.authenticated = false;
       $scope.auth_data = {};
       Auth.getUser().then(function(res) {
@@ -26,6 +26,10 @@
 
       $scope.getID = function() {
         console.log('getid ', Auth.getCenterId());
+      };
+
+      $scope.logout = function() {
+        console.log('Logging Out ', Auth.logout());
       };
 
     }
