@@ -4,7 +4,7 @@ var defaultEnvConfig = require('./default');
 var domainName = 'http://localhost:';
 module.exports = {
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/notes_share',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/Banking',
     options: {
       user: '',
       pass: ''
