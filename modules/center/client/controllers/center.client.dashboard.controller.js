@@ -1,6 +1,6 @@
 (function () {
-  angular.module('center').controller('dashboardController', ['$scope', 'Auth', '$localStorage', '$state', '$rootScope', 'Flash', 'centerService', 'StaffService',
-  function ($scope, Auth, $localStorage, $state, $rootScope, Flash, centerService, StaffService) {
+  angular.module('center').controller('dashboardController', ['$scope', 'Auth', '$localStorage', '$state', '$rootScope', 'Flash', 'centerService', 'StaffService', 'dashboardService',
+  function ($scope, Auth, $localStorage, $state, $rootScope, Flash, centerService, StaffService, dashboardService) {
     // Dashboard functions start here
     $().ready(function() {
       $('[rel="tooltip"]').tooltip();
@@ -18,8 +18,52 @@
     }
 
     // Dashboard functions end here
+    // Hide and show function start here
+
+    $scope.hide = function() {
+      $scope.myVar = !$scope.myVar;
+    };
+
+    // Hide and Show function end here
+
+    // Date picker function starts here
+    $scope.accountOpenDate = new Date();
+    // Date picker function ends here
+
+    // Account create function start here
+
+    $scope.create = function () {
+      var accountData = {
+        accountNumber: $scope.accountNumber,
+        customerId: $scope.customerId,
+        accountType: $scope.accountType,
+        accountDetails: {
+          firstName: $scope.firstName,
+          lastName: $scope.lastName,
+          middleName: $scope.MiddleName,
+          ifscCode: $scope.ifscCode,
+          address: $scope.Address,
+          accountOpenDate: $scope.accountOpenDate,
+          email: $scope.email,
+          phoneNumber: $scope.phoneNumber,
+          dob: $scope.dob,
+          occupation: $scope.occupation
+        }
 
 
+
+
+      };
+       // TODO handle login failure case
+      dashboardService.createAccount(accountData).success(function(response) {
+        console.log('successfully created account');
+        console.log(response._id);
+        $scope.myVar = !$scope.myVar;
+      });
+    };
+
+
+    // Account create function end here
     console.log('dashboard controller');
     Auth.getUser().then(function(res) {
       $scope.user = res.data;
@@ -27,7 +71,7 @@
      // console.log($scope.user);
      // Auth.setCenterId(res.data.centerIds[0]._id);
     });
-    
+
     $scope.capturedImages = {
       'id': 0,
       'show': false,

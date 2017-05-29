@@ -3,6 +3,7 @@ var logger = require('winston'),
   path = require('path'),
   mongoose = require('mongoose'),
   Center = mongoose.model('Center'),
+  AccountCreate = mongoose.model('AccountCreate'),
   Staff = mongoose.model('Staff'),
   Joi = require('joi'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
@@ -122,6 +123,22 @@ exports.createStaff = function(req, res, next) {
 
       });
       res.status(200).send(staff);
+    }
+  });
+};
+
+
+//  Create account query is here
+exports.createAccount = function(req, res, next) {
+  logger.debug('Creating your acccount pls wait....!!!', req);
+  var createAccountDetails = new AccountCreate(req.body);
+  createAccountDetails.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.status(200).send(createAccountDetails);
     }
   });
 };

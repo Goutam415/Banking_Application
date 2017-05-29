@@ -56,13 +56,17 @@
              controller: 'headerController'
            },
            'leftNav': {
-             templateUrl: 'modules/center/client/views/leftnav/center.client.centernav.view.html',
-             controller: 'centerNavController'
+             templateUrl: 'modules/center/client/views/leftnav/center.client.dashboardnav.view.html',
+             controller: 'dashboardController'
            },
            'main': {
              template: '<div ui-view></div>'
            }
          }
+       }).state('center.savings', {
+         url: '/savings',
+         templateUrl: 'modules/center/client/views/center.client.savingsaccount.view.html',
+         controller: 'savingsAccountController'
        })
         .state('center.settings', {
           url: '/settings',

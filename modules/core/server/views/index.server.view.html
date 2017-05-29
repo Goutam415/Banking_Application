@@ -1,0 +1,19 @@
+{% extends 'layout.server.view.html' %} {% block content %}
+
+<section ui-view>
+
+    <div ui-view="header"></div>
+
+    <!--Wrapper Start-->
+    <div class="wrapper clearfix">
+        <div class="inner-conatiner">
+            <!--Side Menu Section-->
+            <div ui-view="leftNav"></div>
+            <!--Side Menu Section end Here-->
+            <!--Right container-->
+            <div ui-view="main"></div>
+            <!--Right container End-->
+        </div>
+    </div>
+</section>
+{% endblock %}

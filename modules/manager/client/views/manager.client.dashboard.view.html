@@ -1,0 +1,65 @@
+<!-- <h1 class="customertableh1"><b>Customers List</b></h1> -->
+<div class="form-group-dashboard dashboardtable">
+<div class="row">
+<a ui-sref = "app.add"><button type="button" class="btn btn-default"><b>Add Customer</b></button> </a>
+<!--<a ui-sref = "app.dash"><button type="button" class="btn btn-default"><b>Customer List</b></button> </a>-->
+</div>
+<br/>
+<br/>
+
+  <!-- <label for="customer_Name" class = "control-label">Search by Name</label> -->
+    <div>
+        <input type="text" placeholder="Search by Name" class="form-control customerWidth" ng-model = "searchName.customerName"/>
+    </div>
+
+<br />
+
+<table class= "table table-hover">
+<thead >
+
+  <tr>
+    <th>Sl.no</th>
+    <th >Name</th>
+    <th>Email Id</th>
+    <th>Center</th>
+    <th>Contact No</th>
+    <th>Address</th>
+    <th></th>
+    <!-- <th>Validity</th> -->
+  </tr>
+</thead>
+
+<tbody>
+  <tr ng-repeat="cust in Customers | filter: searchName track by $index ">
+    <td> {{$index+1}} </td>
+    <td> {{cust.customerName}} </td>
+    <td> {{cust.customerEmail}} </td>
+    <td>
+      <ul>
+          <li ng-repeat="i in cust.centerIds">{{i.centerName}}</li>
+      </ul>
+    </td>
+
+    <td>
+    <ul>
+          <li >{{cust.customercontactnumber1}}</li>
+         
+      </ul>
+    </td>
+     <td>
+    <ul>
+          <li ng-repeat="ms in cust.centerIds">
+          <span ng-repeat="m in ms.address">{{m.addressLine1}}, {{m.addressLine2}}, {{m.landamrk}}, {{m.city}}, {{m.state}}, {{m.country}}- {{m.pincode}} </span>
+ 
+          </li> 
+      </ul>
+    </td>
+    <td>
+        <button class="btn btn-default" ng-click="addCenter($index)"><b>Add centers</b></button>
+     <!-- <a>  <button ng-click= "deletecust(cust._id)" style="width:120;height:25"> Delete</button> </a> -->
+    </td>
+  </tr>
+</tbody>
+</table>
+
+</div>

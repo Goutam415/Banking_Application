@@ -600,3 +600,11 @@ li {
     height: 613px;
     width: 295px;
 }
+
+.off-top {
+    top: 190px;
+}
+
+.card-properties{
+    width: 805px;
+}

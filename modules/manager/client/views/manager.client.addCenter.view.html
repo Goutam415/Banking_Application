@@ -1,0 +1,216 @@
+
+
+<form name="centerForm" class="col-md-9 col-md-push-2 top-margin">
+<br/>
+
+<div class="form-group row">
+      <label for="centerName" class="col-sm-3 control-label">Center Name<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":centerForm.centerName.$dirty, "error":centerForm.centerName.$invalid, "validator noerror":!centerForm.centerName.$invalid}'>
+          <input type="text" class="form-control customerWidth" placeholder="Center Name" name="centerName" ng-model="practice.centerName"
+            required>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="centerAffilatedName" class="col-sm-3 control-label">Center Affilated Name<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":centerForm.centerAffilatedName.$dirty, "error":centerForm.centerAffilatedName.$invalid, "validator noerror":!centerForm.centerAffilatedName.$invalid}'>
+          <input type="text" class="form-control customerWidth" placeholder="Affliated Name" name="CenterAffilatedName" ng-model="practice.centerAffilatedName"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="centerSpecialization" class="col-sm-3 control-label">Specialization<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":centerForm.centerSpecialization.$dirty, "error":centerForm.centerSpecialization.$invalid, "validator noerror":!centerForm.centerSpecialization.$invalid}'>
+          <select class="form-control customerWidth" name="centerSpecialization" ng-model="practice.centerSpecialization" required>
+      <option value="Dental">Dental</option>
+      <option value="Physician">Physician</option>
+      <option value="Dermatology">Dermatology</option>
+      <option value="ENT">E.N.T</option>
+      <option value="Gynecology">Gynecology</option>
+      <option value="Cardiology">Cardiology</option>
+      <option value="Pediatrician ">Pediatrician</option>
+    </select><br>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="centerTin" class="col-sm-3 control-label">TIN No.<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":centerForm.centerTin.$dirty, "error":centerForm.centerTin.$invalid, "validator noerror":!centerForm.centerTin.$invalid}'>
+          <input type="text" class="form-control customerWidth" placeholder="TIN" name="CenterTin" ng-model="practice.centerTin" required>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="form-group row">
+      <label for="subscriptionname" class="col-sm-3 control-label">Subscription Name<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":centerForm.subscriptionname.$dirty, "error":centerForm.subscriptionname.$invalid, "validator noerror":!centerForm.subscriptionname.$invalid}'>
+          <select class="form-control customerWidth" name="subscriptionname" ng-model="practice.subscriptionname">
+      <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+    </select>
+        </div>
+      </div>
+    </div>
+
+   <!-- <div class="form-group row">
+      <label for="subscriptionname" class="col-sm-3 control-label">Number of Users<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":centerForm.subscriptionname.$dirty, "error":centerForm.subscriptionname.$invalid, "validator noerror":!centerForm.subscriptionname.$invalid}'>
+          <select class="form-control customerWidth" name="subscriptionname" ng-model="practice.subscriptionname">
+      <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+    </select>
+        </div>
+      </div>
+    </div>-->
+
+    <div class="form-group row">
+      <label for="centerEmail" class="col-sm-3 control-label">Center Email<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":centerForm.centerEmail.$dirty, "error":centerForm.centerEmail.$invalid, "validator noerror":!centerForm.centerEmail.$invalid}'>
+          <input type="email" class="form-control customerWidth" placeholder="center@hospital.com" name="CenterEmail" ng-model="practice.centerEmail"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="centerContactNumber" class="col-sm-3 control-label">Contact Number<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":centerForm.centerContactNumber.$dirty, "error":centerForm.centerContactNumber.$invalid, "validator noerror":!centerForm.centerContactNumber.$invalid}'>
+          <input type="text" class="form-control customerWidth" placeholder="Moblie/Landline" name="centerContactNumber" ng-model="practice.centerContactNumber"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="addressLine1" class="col-sm-3 control-label">AddressLine1<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":myForm.addressLine1.$dirty, "error":myForm.addressLine1.$invalid, "validator noerror":!myForm.addressLine1.$invalid}'>
+          <input type="text" class="form-control customerWidthAddress" placeholder="Address Line 1" name="addressLine1" ng-model="practice.addressLine1"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="addressLine2" class="col-sm-3 control-label">AddressLine2</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control customerWidthAddress" placeholder="Address Line 2" ng-model="practice.addressLine2">
+      </div>
+    </div>
+
+
+
+
+    <div class="form-group row">
+      <label for="landamrk" class="col-sm-3 control-label">Landmark</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control customerWidth" placeholder="Nearest landmark" ng-model="practice.landamrk">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 control-label">City<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":myForm.city.$dirty, "error":myForm.city.$invalid, "validator noerror":!myForm.city.$invalid}'>
+          <input type="text" class="form-control customerWidth" placeholder="City" name="city" ng-model="practice.city" required>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="form-group row">
+      <label for="state" class="col-sm-3 control-label">State<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":myForm.state.$dirty, "error":myForm.state.$invalid, "validator noerror":!myForm.state.$invalid}'>
+          <input type="text" class="form-control customerWidth" placeholder="State" name="state" ng-model="practice.state" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="country" class="col-sm-3 control-label">Country<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":myForm.country.$dirty, "error":myForm.country.$invalid, "validator noerror":!myForm.country.$invalid}'>
+          <input type="text" class="form-control customerWidth" placeholder="Country" name="country" ng-model="practice.country" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="pincode" class="col-sm-3 control-label">Pincode<i class="customerstar">*</i></label>
+      <div class="col-sm-3">
+        <div ng-class='{"validator":myForm.pincode.$dirty, "error":myForm.pincode.$invalid, "validator noerror":!myForm.pincode.$invalid}'>
+          <input type="text" class="form-control customerWidth" placeholder="Pincode" name="pincode" ng-model="practice.pincode" required>
+        </div>
+      </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="centerWebsite" class="col-sm-3 control-label">Center Website</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control customerWidth" placeholder="www.hospital.com" name="centerWebsite" ng-model="practice.centerWebsite">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="centerSpecialText" class="col-sm-3 control-label">Special Text</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control customerWidth" placeholder="Special Text" name="centerSpecialText" ng-model="practice.centerSpecialText">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="dateofjoining" class="col-sm-3 control-label">Date of Subscription<i class="customerstar">*</i></label>
+        <div class="col-sm-3">
+          <div ng-class='{"validator":centerForm.dateofjoining.$dirty, "error":centerForm.dateofjoining.$invalid, "validator noerror":!centerForm.dateofjoining.$invalid}'>
+            <input type="date" class="form-control customerWidth" placeholder="" name="dateofjoining" ng-model="practice.dateofjoining"
+              required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="centerTimezone" class="col-sm-3 control-label">Center TimeZone<i class="customerstar">*</i></label>
+        <div class="col-sm-3">
+          <div ng-class='{"validator":centerForm.centerTimezone.$dirty, "error":centerForm.centerTimezone.$invalid, "validator noerror":!centerForm.centerTimezone.$invalid}'>
+            <input type="text" class="form-control customerWidth" placeholder="" name="centerTimezone" ng-model="practice.centerTimezone"
+              required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="isActive" class="col-sm-3 control-label">Active login<i class="customerstar">*</i></label>
+        <div class="col-sm-3">
+          <input type="radio" ng-model="practice.isActive" value="true" />Yes
+          <input type="radio" ng-model="practice.isActive" value="false" />No<br />
+        </div>
+      </div>
+
+<div class="form-group row col-md-4 col-md-push-2">
+<input type="Submit" name="myButton" value="Submit" ng-click= "createCenter()" class="btn btn-info" ng-disabled= "myForm.$invalid">
+<a ui-sref = "app.dash"><button class="btn btn-info">Cancel</button> </a>
+</div>
+
+
+</form>
+
+
+
+
+
+

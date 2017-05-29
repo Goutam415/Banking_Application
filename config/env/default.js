@@ -29,6 +29,14 @@ module.exports = {
     sessionKey: 'cenId',
     sessionCollection: 'censessions'
   },
+  managerSession: {
+    sessionKey: 'manId',
+    sessionCollection: 'mansessions'
+  },
+  patientSession: {
+    sessionKey: 'patId',
+    sessionCollection: 'patsessions'
+  },
 
 
   // Lusca config

@@ -1,0 +1,30 @@
+ <header>
+            <!--Top Menu Start-->
+            <div class="top-menu">
+                <div class="logo-section">
+                    <a class="white-color hover-white text-deco-none logo " ui-sref="app.dash">
+                        eManageHealth
+                    </a>
+                </div>
+                 <div class="login-menu height pull-right" ng-if="!isSignIn">
+                  <ul class="height no-margin no-padding">
+                  <li><a href="">Home</a></li>
+                  <li><a href="">Help</a></li>
+                  <li><a href="">Contact</a></li>
+                </ul>
+               </div>
+                <div class="user-details-section" ng-if="isSignIn">
+                    <ul>
+                        <li class="user-name-image">
+                            <div class="user-name">
+                               <b><h6 class="white-color hover-white logo"></b>
+                                    Welcome
+                                </h6>
+                                <h5 class="white-color no-margin">
+                                </h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+  </header>

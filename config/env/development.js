@@ -46,6 +46,16 @@ module.exports = {
       path: '/center',
       url: domainName + defaultEnvConfig.port + '/center',
       session: 'centerSession'
+    },
+    manager: {
+      path: '/manager',
+      url: domainName + defaultEnvConfig.port + '/manager',
+      session: 'managerSession'
+    },
+    patient: {
+      path: '/patient',
+      url: domainName + defaultEnvConfig.port + '/patient',
+      session: 'patientSession'
     }
   }
 };

@@ -1,0 +1,159 @@
+table 
+{
+  border: 0;
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center
+  }
+td,  th {
+  border-right: solid 1px #fff; 
+  border-left: solid 1px #fff;
+}
+.top-margin {
+  margin-top: 4%;
+}
+
+.dashboardtable {
+    margin-top: 5%;
+    margin-left: 4%;
+}
+
+.form-group-dashboard{
+  margin-bottom: 20%;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+
+input.ng-valid {
+    background-color:#E0FFFF;
+}
+
+.buttonstyle {
+  background-color: #800000,
+  color : FFFAF0;
+
+}
+
+
+
+
+/*Customer Administration CSS
+*/
+
+.customertableh1 {
+  font-family: 'Raleway',sans-serif; 
+  font-size: 30px; 
+  font-weight: 600; 
+  line-height: 72px; 
+  margin: 0 0 24px; 
+  text-align: center; 
+  text-transform: uppercase;
+}
+
+.customerTableHead {
+  background-color: #ffece6; 
+  width: 30%;
+  text-align: center; 
+  border : 2px;
+}
+
+.customerContainer {
+
+    background-color:   #f6f6f6;
+    margin-top :10px;
+    padding: 10px;
+}
+
+
+.customerbuttonStyles {
+  margin-left: 50px;
+}
+
+.customerHideButtonStyle {
+  margin-right: 50px;
+  float: right;
+}
+
+.customerWidth {
+  width: 200px;
+  
+}
+.customerWidthAddress {
+  width: 500px;
+}
+
+.customerWidthEmail {
+  width: 300px;
+  
+}
+
+.horizontalline {
+    border-bottom: 2px solid darkgrey;
+    
+}
+
+.demo-2 {
+	margin: 1em 0 0.5em 0;
+	font-weight: normal;
+	position: relative;
+	text-shadow: 0 -1px rgba(0,0,0,0.6);
+	font-size: 14px;
+	line-height: 20px;
+	background: #3bb2b0;
+	width: 200px;
+	border: 1px solid #fff;
+	padding: 5px 15px;
+	color: white;
+	border-radius: 0 10px 0 10px;
+	box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+	font-family: 'Muli', sans-serif;
+}
+
+.labelwidth {
+    text-align: left;
+}
+
+
+.customerstar {
+  color: #FF0000;
+}
+
+.logo-section {
+  /*height: 200%;*/
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 20px;
+
+}
+
+.top-menu-login{
+  height: 60px;
+}
+
+.white-color {
+  color: #fff;
+  text-align: center;
+  font-size: large;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin:0 auto;
+}
+.navbar-toggle {
+    z-index:3;
+}

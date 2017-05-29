@@ -1,34 +1,34 @@
 var patients = [{
-    'userID': 'saurabh.simpyD7qba3kkqi',
-    'name': 'Saurabh Jha',
-    'ownerID': '572dae73f424fc4413486a5d',
-    'mobile': 7406446615,
-    'alternate_number': 9167905808,
-    'age': 36,
-    'dob': '1980-05-06T18:30:00.000Z',
-    'bloodGroup': 'B+',
-    'gender': 'M',
-    'email': 'saurabh.simpy@gmail.com',
-    'address': {
-      'pinCode': 560021,
-      'state': 'Karnataka',
-      'city': 'Bangalore',
-      'landamrk': 'UCB showroom',
-      'addressLine2': 'Indira nagar',
-      'addressLine1': '21 cross'
-    },
-    'city': 'Bangalore',
+  'userID': 'saurabh.simpyD7qba3kkqi',
+  'name': 'Saurabh Jha',
+  'ownerID': '572dae73f424fc4413486a5d',
+  'mobile': 7406446615,
+  'alternate_number': 9167905808,
+  'age': 36,
+  'dob': '1980-05-06T18:30:00.000Z',
+  'bloodGroup': 'B+',
+  'gender': 'M',
+  'email': 'saurabh.simpy@gmail.com',
+  'address': {
     'pinCode': 560021,
-    'image': '',
-    'signature': '',
-    'updatedAt': 1462615144123,
-    'createdAt': 1462615144123,
-    'referredBy': 'Rk',
-    'medicalVitalSign': [
-      'fever',
-      'cancer'
-    ]
+    'state': 'Karnataka',
+    'city': 'Bangalore',
+    'landamrk': 'UCB showroom',
+    'addressLine2': 'Indira nagar',
+    'addressLine1': '21 cross'
   },
+  'city': 'Bangalore',
+  'pinCode': 560021,
+  'image': '',
+  'signature': '',
+  'updatedAt': 1462615144123,
+  'createdAt': 1462615144123,
+  'referredBy': 'Rk',
+  'medicalVitalSign': [
+    'fever',
+    'cancer'
+  ]
+},
 
   {
     'userID': 'suryafactspnDmQiz0Kz',
@@ -111,7 +111,7 @@ addSharePasswordEmailTemplate();
 var Account = require(path.join(__dirname, 'server/models/account'));
 var password = '123456';
 mongoose.connect(config.mongo_url);
-var user = new Account({ name: 'emenage', email: 'trueapps@gmail.com', mobile: '7406446615', role: 'Admin', owner: '1', pin: '1234', isOwner: true, center: 'abc', _id: '572dae73f424fc4413486a5d' });
+var user = new Account({ name: 'TrueApps', email: 'trueapps@gmail.com', mobile: '7406446615', role: 'Admin', owner: '1', pin: '1234', isOwner: true, center: 'abc', _id: '572dae73f424fc4413486a5d' });
 
 function create_customer() {
   console.log('creating customer');
@@ -130,14 +130,14 @@ create_customer();
 
 
 var doctorList = [{
-    docname: 'Ankit Goel',
-    emaildid: 'ankit89m@gmail.com',
-    mobile: '9036163563',
-    regno: '1234567890',
-    calcolor: 'red',
-    role: 'doctor',
-    pcenter: 'abc'
-  },
+  docname: 'Ankit Goel',
+  emaildid: 'ankit89m@gmail.com',
+  mobile: '9036163563',
+  regno: '1234567890',
+  calcolor: 'red',
+  role: 'doctor',
+  pcenter: 'abc'
+},
   {
     docname: 'Ratikanta Patra',
     emaildid: 'iratikanta.patra@gmail.com',

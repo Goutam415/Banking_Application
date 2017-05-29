@@ -105,6 +105,9 @@ module.exports = function (app, db, initSession) {
   // route for updating center details
   router.put('/api/update/center', centerController.updateCenter);
 
+  // route for Creating account details
+  router.post('/api/center/createAccount', centerController.createAccount);
+
 /**
 * @api {post} center/api/update/staff/center center staffcenterID_update service * @apiVersion 0.1.0
 * @apiName staffcenterID_update

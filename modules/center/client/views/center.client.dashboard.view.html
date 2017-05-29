@@ -1,6 +1,6 @@
 <div class="row">
 <div class="dashboard-properties">
-        <div class="col-md-4 col-sm-offset-3">
+        <div class="col-md-4 col-sm-offset-3" ng-hide="myVar">
             <div class="card-container">
                 <div class="card">
                     <div class="front">
@@ -64,6 +64,104 @@
                 </div> <!-- end card -->
             </div> <!-- end card-container -->
         </div> <!-- end col-sm-3 -->
+        <div class="col-md-6 col-sm-offset-1" ng-show="myVar">
+            <div class="card-container card-properties">
+                <div class="card">
+                    <div class="row">
+                    <form name="exampleForm" class="myForm" required>
+                    <label>First Name:</label>
+                        <input type="text" name="userFirstName" ng-model="firstName" required />
+                        <div ng-messages="exampleForm.userFirstName.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Last Name:</label>
+                        <input type="text" name="userLastName" ng-model="lastName" required />
+                        <div ng-messages="exampleForm.userLastName.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Middle Name:</label>
+                        <input type="text" name="userMiddleName" ng-model="MiddleName" required />
+                        <div ng-messages="exampleForm.userMiddleName.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                    
+                    <label>Account Number:</label>
+                        <input type="text" name="accountNumber" ng-model="accountNumber" required />
+                        <div ng-messages="exampleForm.accountNumber.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>IFSC Code:</label>
+                        <input type="text" name="ifscCode" ng-model="ifscCode" required />
+                        <div ng-messages="exampleForm.ifscCode.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                    
+                    <label>Address:</label>
+                        <input type="text" name="Address" ng-model="Address" required />
+                        <div ng-messages="exampleForm.Address.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Account opening Date:</label>
+                        <div flex-gt-xs>
+                                <md-datepicker ng-model="accountOpenDate" md-placeholder="Enter date" disabled></md-datepicker>
+                            </div>
+
+                    <label>Customer ID:</label>
+                        <input type="text" name="customerId" ng-model="customerId" required />
+                        <div ng-messages="exampleForm.customerId.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Email Address:</label>
+                        <input type="email" name="Email" ng-model="email" required />
+                        <div ng-messages="exampleForm.Email.$error">
+                            <div ng-message="required">This field is required</div>
+                            <div ng-message="email">Your email address is invalid</div>
+                        </div>
+
+                    <label>Phone Number:</label>
+                        <input type="email" name="userPhoneNumber" ng-model="phoneNumber" 
+                                ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/"
+                                required/>
+                        <div ng-messages="exampleForm.userPhoneNumber.$error">
+                            <div ng-message="required">This field is required</div>
+                            <div ng-message="pattern">Must be a valid 10 digit phone number</div>
+                        </div>
+
+                    <label>Date Of Birth:</label>
+                            <div flex-gt-xs>
+                                <md-datepicker ng-model="dob" name="DOB" md-placeholder="Enter date" required></md-datepicker>
+                            </div>
+                            <div ng-messages="exampleForm.DOB.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Occupation:</label>
+                        <input type="text" name="occupation" ng-model="occupation" required />
+                        <div ng-messages="exampleForm.occupation.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Account type:</label>
+                        <input type="text" name="accountType" ng-model="accountType" required />
+                        <div ng-messages="exampleForm.accountType.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <div class="container">
+                        <button type="button" class="btn btn-primary" ng-click="create()">Create Account</button>
+                        <button type="button" class="btn btn-danger" ng-click="hide()">Cancel</button>
+                    </div>
+                    </form>
+                </div> <!-- row div end -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col-sm-3 -->
+        <div class="pull-right col-md-2 off-top" ng-hide="myVar" ng-click="hide()"><a ui-sref="">Create an account</a></div>
         </div>
 <div class="background"></div>
 </div>

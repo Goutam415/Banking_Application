@@ -119,7 +119,7 @@ module.exports.initSession = function (app, db, configPath) {
       collection: config[configPath].sessionCollection
     })
   }));
-  
+
 
   // Add Lusca CSRF Middleware
   app.use(lusca(config.csrf));
