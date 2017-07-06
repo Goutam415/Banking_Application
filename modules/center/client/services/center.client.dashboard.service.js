@@ -7,6 +7,9 @@
           return {
             createAccount: function(data) {
               return $http.post(url.BASE + '/api/center/createAccount', data);
+            },
+            savingsDeposite: function(data) {
+              return $http.post(url.BASE + '/api/center/createAccount', data);
             }
           };
 

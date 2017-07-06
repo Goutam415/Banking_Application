@@ -37,6 +37,7 @@
         accountNumber: $scope.accountNumber,
         customerId: $scope.customerId,
         accountType: $scope.accountType,
+        creatorId: Auth.getCenterId(),
         accountDetails: {
           firstName: $scope.firstName,
           lastName: $scope.lastName,

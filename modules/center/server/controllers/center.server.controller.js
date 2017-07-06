@@ -143,6 +143,35 @@ exports.createAccount = function(req, res, next) {
   });
 };
 
+exports.savingsAccountDeposit = function(req, res, next) {
+  logger.debug('Deposit is in progress. Please wait....!!!', req);
+  var accountNum = req.body.accountNumber;
+  var transactionEmployeeId1 = req.body.transactions.transactionEmployeeId;
+  var transactorCustName1 = req.body.transactions.transactorCustName;
+
+// Transaction Id Creating function starts here
+  var number = Math.random();
+  number.toString(36);
+  var id = number.toString(36).substr(2, 9);
+  id = id.toLocaleUpperCase();
+  id.length >= 9;
+// Transaction Id Creating function ends here
+
+  var transactionId1 = id;
+  var transactionType1 = req.body.transactions.transactionType;
+  var transactionAmount1 = req.body.transactions.transactionAmount;
+  var transactionDate1 = req.body.transactions.transactionDate;
+  var transaction = { transactionEmployeeId: transactionEmployeeId1, transactorCustName: transactorCustName1, transactionId: transactionId1, transactionType: transactionType1, transactionAmount: transactionAmount1, transactionDate: transactionDate1 };
+  AccountCreate.update({ accountNumber: accountNum }, { $push: { transactions: transaction } }).exec(function(err, data) {
+    if (!err) {
+      logger.info('Update transaction :  Success');
+      res.status(200).send({ data: data });
+    } else {
+      logger.info('Update transaction :  Failed');
+      res.status(403).send({ msg: err });
+    }
+  });
+};
 
 /** validate get doctor params */
 exports.getDoctorsParams = {

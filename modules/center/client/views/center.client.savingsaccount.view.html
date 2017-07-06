@@ -1,14 +1,54 @@
 <div class="row">
-<div class="dashboard-properties">
-        <div class="col-md-4 col-sm-offset-3">
-            <div>
-heyyyyyyyyyyyyyyyyyyyyyyyyyy
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-offset-3">
-            <div>
-                
-            </div>
-        </div>
+<div class="dashboard-properties top-page">
+             <div class="col-md-6 col-sm-offset-1 top-page">
+            <div class="card-container card-properties">
+                <div class="card">
+                    <div class="row">
+                    <form name="exampleForm" class="myForm" required>
+                    <label>Depositor Name:</label>
+                        <input type="text" name="depositorName" ng-model="depositorName" required />
+                        <div ng-messages="exampleForm.depositorName.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Transaction ID:</label>
+                        <input type="text" name="transaction" ng-model="transactionId" required />
+                        <div ng-messages="exampleForm.transaction.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Transaction type:</label>
+                        <input type="text" name="transactionTyp" ng-model="transactionType" required />
+                        <div ng-messages="exampleForm.transactionTyp.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                    
+                    <label>Account Number:</label>
+                        <input type="text" name="accountNumber" ng-model="accountNumber" required />
+                        <div ng-messages="exampleForm.accountNumber.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+
+                    <label>Transaction Amount:</label>
+                        <input type="text" name="transactAmt" ng-model="transactAmount" required />
+                        <div ng-messages="exampleForm.transactAmt.$error">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                    
+
+                    <label>Transaction Date:</label>
+                        <div flex-gt-xs>
+                                <md-datepicker ng-model="transactionDate" md-placeholder="Enter date" disabled></md-datepicker>
+                            </div>
+
+                    <div class="container">
+                        <button type="button" class="btn btn-primary" ng-click="deposit()">Deposit</button>
+                        <button type="button" class="btn btn-danger" ng-click="">Cancel</button>
+                    </div>
+                    </form>
+                </div> <!-- row div end -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col-sm-3 -->
 </div>
 </div>

@@ -18,7 +18,7 @@ var Details = new Schema({
 
 
 var Transaction = new Schema({
-  transactionEmployeeId: { type: Number },
+  transactionEmployeeId: { type: String },
   transactorCustName: { type: String },
   transactionId: { type: String },
   transactionType: { type: String },
@@ -32,10 +32,11 @@ var Transaction = new Schema({
 
 var AccountCreateSchema = new Schema({
   accountNumber: { type: Number },
+  accountBalance: { type: Number },
   customerId: { type: Number },
   accountType: { type: String },
   panNumber: { type: String },
-  creatorId: { type: Number },
+  creatorId: { type: String },
   accountDetails: [Details],
   transactions: [Transaction]
 });

@@ -1,60 +1,29 @@
 
 (function () {
   angular.module('center').controller('savingsAccountController',
-   ['$scope', 'procedureCatalogService', '$localStorage', '$state', '$rootScope', 'procedureFactory', 'Auth',
-  function ($scope, procedureCatalogService, $localStorage, $state, $rootScope, procedureFactory, Auth) {
+   ['$scope', 'procedureCatalogService', '$localStorage', '$state', '$rootScope', 'procedureFactory', 'Auth', 'savingsService',
+  function ($scope, procedureCatalogService, $localStorage, $state, $rootScope, procedureFactory, Auth, savingsService) {
     // $scope.procformlist = {};
 
-    
-    console.log("savings controller");
 
-    $scope.saveProcedurecatalog = function(idCat) {
-      if ($scope.procs.procedureName.length > 0) {
-        console.log('------inside saveProcedurecatalog() controller------');
-        console.log(idCat);
-        var drugToSend = {};
-        drugToSend = {
-          proceduresList: {
-            idCategory: idCat,
-            procedureName: $scope.procs.procedureName,
-            procedureCost: $scope.procs.procedureCost,
-            xTooth: $scope.procs.xTooth,
-            notes: $scope.procs.notes,
-            isTaxTDS: $scope.procs.isTaxTDS,
-            isTaxVAT: $scope.procs.isTaxVAT
-          }
-        };
-        drugToSend.centerId = Auth.getCenterId();
-        console.log(drugToSend);
-        procedureCatalogService.saveProc(drugToSend).then(function (res) {
-          $scope.showProc();
-          $scope.currentEditIndex = -1;
-        }, function(err) {
-          console.log(err);
-        });
-      }
+    console.log('savings controller');
+    $scope.transactionDate = new Date();
+    $scope.deposit = function() {
+      var transactionData = {
+        accountNumber: $scope.accountNumber,
+        transactions: {
+          transactionEmployeeId: Auth.getCenterId(),
+          transactorCustName: $scope.depositorName,
+          transactionId: $scope.transactionId,
+          transactionType: $scope.transactionType,
+          transactionAmount: $scope.transactAmount,
+          transactionDate: $scope.transactionDate
+        }
+      };
+      savingsService.savingsDeposite(transactionData).then(function (response) {
+        console.log(response);
+      });
     };
-
-    $scope.saveCategory = function () {
-      if ($scope.procs.procedureCategory.length > 0) {
-        var drugTypeToSend = {};
-        drugTypeToSend = {
-          CategoryName: {
-            procedureCategory: $scope.procs.procedureCategory
-          }
-        };
-        drugTypeToSend.centerId = Auth.getCenterId();
-        console.log(drugTypeToSend);
-        procedureCatalogService.addCategory(drugTypeToSend).then(function(res) {
-          console.log(res.data.data);
-          $scope.showProc();
-          $state.reload();
-        }, function(err) {
-          console.log(err);
-        });
-      }
-    };
-
     $scope.edit = function(p, $index) {
       p.centerId = Auth.getCenterId();
       console.log(p);

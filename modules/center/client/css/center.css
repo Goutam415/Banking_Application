@@ -608,3 +608,7 @@ li {
 .card-properties{
     width: 805px;
 }
+
+.top-page{
+    top: 18px;
+}
