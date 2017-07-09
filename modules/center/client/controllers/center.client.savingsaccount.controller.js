@@ -14,7 +14,6 @@
         transactions: {
           transactionEmployeeId: Auth.getCenterId(),
           transactorCustName: $scope.depositorName,
-          transactionId: $scope.transactionId,
           transactionType: $scope.transactionType,
           transactionAmount: $scope.transactAmount,
           transactionDate: $scope.transactionDate

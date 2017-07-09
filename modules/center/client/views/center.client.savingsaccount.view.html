@@ -11,12 +11,6 @@
                             <div ng-message="required">This field is required</div>
                         </div>
 
-                    <label>Transaction ID:</label>
-                        <input type="text" name="transaction" ng-model="transactionId" required />
-                        <div ng-messages="exampleForm.transaction.$error">
-                            <div ng-message="required">This field is required</div>
-                        </div>
-
                     <label>Transaction type:</label>
                         <input type="text" name="transactionTyp" ng-model="transactionType" required />
                         <div ng-messages="exampleForm.transactionTyp.$error">
@@ -24,13 +18,13 @@
                         </div>
                     
                     <label>Account Number:</label>
-                        <input type="text" name="accountNumber" ng-model="accountNumber" required />
+                        <input type="number" name="accountNumber" ng-model="accountNumber" required />
                         <div ng-messages="exampleForm.accountNumber.$error">
                             <div ng-message="required">This field is required</div>
                         </div>
 
                     <label>Transaction Amount:</label>
-                        <input type="text" name="transactAmt" ng-model="transactAmount" required />
+                        <input type="number" name="transactAmt" ng-model="transactAmount" required />
                         <div ng-messages="exampleForm.transactAmt.$error">
                             <div ng-message="required">This field is required</div>
                         </div>

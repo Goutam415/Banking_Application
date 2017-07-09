@@ -161,13 +161,25 @@ exports.savingsAccountDeposit = function(req, res, next) {
   var transactionType1 = req.body.transactions.transactionType;
   var transactionAmount1 = req.body.transactions.transactionAmount;
   var transactionDate1 = req.body.transactions.transactionDate;
-  var transaction = { transactionEmployeeId: transactionEmployeeId1, transactorCustName: transactorCustName1, transactionId: transactionId1, transactionType: transactionType1, transactionAmount: transactionAmount1, transactionDate: transactionDate1 };
-  AccountCreate.update({ accountNumber: accountNum }, { $push: { transactions: transaction } }).exec(function(err, data) {
+  AccountCreate.find({ accountNumber: accountNum }).exec(function(err, data) {
     if (!err) {
-      logger.info('Update transaction :  Success');
-      res.status(200).send({ data: data });
+      logger.info('finding document to update balance');
+      var bal = data[0].accountBalance;
+      bal = bal + transactionAmount1;
+      logger.info('Found your account. please wait while the transaction is being processed.');
+      var transaction = { transactionEmployeeId: transactionEmployeeId1, balanceAfterTransaction: bal, transactorCustName: transactorCustName1, transactionId: transactionId1, transactionType: transactionType1, transactionAmount: transactionAmount1, transactionDate: transactionDate1 };
+      AccountCreate.update({ accountNumber: accountNum }, { accountBalance: bal, $push: { transactions: transaction } }).exec(function(err, data) {
+        if (!err) {
+          logger.info('Update transaction :  Success');
+          res.status(200).send({ data: data });
+          logger.info('Deposit done successfully');
+        } else {
+          logger.info('Update transaction :  Failed');
+          res.status(403).send({ msg: err });
+        }
+      });
     } else {
-      logger.info('Update transaction :  Failed');
+      logger.info('Transaction Declined due to some technical error');
       res.status(403).send({ msg: err });
     }
   });
