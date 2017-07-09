@@ -110,6 +110,7 @@ module.exports = function (app, db, initSession) {
 
   // route for savings account deposit
   router.put('/api/center/deposit', centerController.savingsAccountDeposit);
+  router.put('/api/center/withdraw', centerController.savingsAccountWithdraw);
 
 /**
 * @api {post} center/api/update/staff/center center staffcenterID_update service * @apiVersion 0.1.0

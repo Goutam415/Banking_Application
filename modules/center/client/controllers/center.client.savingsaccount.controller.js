@@ -23,6 +23,29 @@
         console.log(response);
       });
     };
+
+
+
+    $scope.withdraw = function() {
+      var transactionData = {
+        accountNumber: $scope.accountNumber,
+        transactions: {
+          transactionEmployeeId: Auth.getCenterId(),
+          transactorCustName: $scope.withdrawerName,
+          transactionType: $scope.transactionType,
+          transactionAmount: $scope.transactAmount,
+          transactionDate: $scope.transactionDate
+        }
+      };
+      savingsService.savingsWithdraw(transactionData).then(function (response) {
+        console.log(response);
+      });
+    };
+
+
+
+
+
     $scope.edit = function(p, $index) {
       p.centerId = Auth.getCenterId();
       console.log(p);

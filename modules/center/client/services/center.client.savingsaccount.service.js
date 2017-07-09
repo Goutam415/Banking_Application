@@ -7,6 +7,9 @@
           return {
             savingsDeposite: function(data) {
               return $http.put(url.BASE + '/api/center/deposit', data);
+            },
+            savingsWithdraw: function(data) {
+              return $http.put(url.BASE + '/api/center/withdraw', data);
             }
           };
 
