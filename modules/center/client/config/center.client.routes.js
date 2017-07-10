@@ -67,6 +67,10 @@
          url: '/savings',
          templateUrl: 'modules/center/client/views/center.client.savingsaccount.view.html',
          controller: 'savingsAccountController'
+       }).state('center.fixed_deposit', {
+         url: '/fixed-deposit',
+         templateUrl: 'modules/center/client/views/center.client.fixed_deposit.view.html',
+         controller: 'fixeddepositAccountController'
        })
         .state('center.settings', {
           url: '/settings',
