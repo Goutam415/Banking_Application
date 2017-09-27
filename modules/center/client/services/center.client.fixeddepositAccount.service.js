@@ -5,11 +5,11 @@
           'use strict';
 
           return {
-            savingsDeposite: function(data) {
-              return $http.put(url.BASE + '/api/center/deposit', data);
+            fd_Open: function(data) {
+              return $http.put(url.BASE + '/api/center/fdopen', data);
             },
-            savingsWithdraw: function(data) {
-              return $http.put(url.BASE + '/api/center/withdraw', data);
+            fd_Close: function(data) {
+              return $http.put(url.BASE + '/api/center/fdclose', data);
             }
           };
 

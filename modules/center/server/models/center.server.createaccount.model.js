@@ -9,10 +9,12 @@ var Details = new Schema({
   ifscCode: { type: String },
   address: { type: String },
   accountOpenDate: { type: Date },
+  accountCloseDate: { type: Date },
   email: { type: String },
   phoneNumber: { type: String },
   dob: { type: Date },
-  occupation: { type: String }
+  occupation: { type: String },
+  rateOfInterest: { type: Number }
 });
 
 
@@ -27,18 +29,71 @@ var Transaction = new Schema({
   transactionDate: { type: Date }
 });
 
+var FDAccount = new Schema({
+  fdAccountNumber: { type: Number },
+  accountCreatorEmployeeId: { type: String },
+  accountClosingEmployeeId: { type: String },
+  transactionId: { type: String },
+  closingTransactionId: { type: String },
+  transactionType: { type: String },
+  closingTransactionType: { type: String },
+  fdAmount: { type: Number },
+  commissionPercentage: { type: Number, default: 5 },
+  commissionDeducted: {type: Number },
+  rateOfInterest: { type: Number },
+  accountOpenDate: { type: Date },
+  accountCloseDate: { type: Date },
+  accountStatus: { type: String },
+  durationOfAccount: { type: Number },
+  actuallyAccountClosedDate: { type: Date },
+  totalAmountReturned: { type: Number }
+});
 
+var RDAccount = new Schema({
+  accountNumber: { type: Number },
+  accountCreatorEmployeeId: { type: String },
+  transactionId: { type: String },
+  transactionType: { type: String },
+  rdAmount: { type: Number },
+  rateOfInterest: { type: Number },
+  accountOpenDate: { type: Date },
+  accountCloseDate: { type: Date },
+  accountStatus: { type: String },
+  durationOfAccount: { type: Number },
+  totalAmountReturned: { type: Number }
+});
+
+
+var LoanAccount = new Schema({
+  accountNumber: { type: Number },
+  accountCreatorEmployeeId: { type: String },
+  transactionId: { type: String },
+  transactionType: { type: String },
+  loanAmount: { type: Number },
+  rateOfInterest: { type: Number },
+  accountOpenDate: { type: Date },
+  accountCloseDate: { type: Date },
+  accountStatus: { type: String },
+  durationOfAccount: { type: Number },
+  totalAmountReturned: { type: Number }
+});
 
 
 var AccountCreateSchema = new Schema({
   accountNumber: { type: Number },
   accountBalance: { type: Number },
+  rdBalance: { type: Number },
+  fdAmount: { type: Number },
   customerId: { type: Number },
   accountType: { type: String },
   panNumber: { type: String },
   creatorId: { type: String },
+  accountStatus: { type: String },
   accountDetails: [Details],
-  transactions: [Transaction]
+  transactions: [Transaction],
+  fdAccount: [FDAccount],
+  loanAccount: [LoanAccount],
+  rdAccount: [RDAccount]
 });
 
 

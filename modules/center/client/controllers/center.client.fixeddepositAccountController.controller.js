@@ -6,21 +6,20 @@
     // $scope.procformlist = {};
 
 
-    console.log('savings controller');
-    $scope.transactionDate = new Date();
-    $scope.open_fd = function() {
-      var transactionData = {
+    console.log('FD controller');
+    $scope.fdOpen = function() {
+      var fdData = {
         accountNumber: $scope.accountNumber,
-        transactions: {
-          transactionEmployeeId: Auth.getCenterId(),
-          transactorCustName: $scope.depositorName,
+        fdAccount: {
+          accountCreatorEmployeeId: Auth.getCenterId(),
           transactionType: $scope.transactionType,
-          transactionAmount: $scope.transactAmount,
-          transactionDate: $scope.transactionDate
+          fdAmount: $scope.transactAmount,
+          rateOfInterest: $scope.roi,
+          accountCloseDate: $scope.accountCloseDate
         }
       };
-      fixeddepositService.savingsDeposite(transactionData).then(function (response) {
-        console.log(response);
+      fixeddepositService.fd_Open(fdData).then(function (response) {
+        console.log(response.data.msg);
       });
     };
 
@@ -29,15 +28,14 @@
     $scope.withdraw = function() {
       var transactionData = {
         accountNumber: $scope.accountNumber,
-        transactions: {
-          transactionEmployeeId: Auth.getCenterId(),
+        fdAccount: {
+          accountClosingEmployeeId: Auth.getCenterId(),
           transactorCustName: $scope.withdrawerName,
           transactionType: $scope.transactionType,
-          transactionAmount: $scope.transactAmount,
-          transactionDate: $scope.transactionDate
+          transactionAmount: $scope.transactAmount
         }
       };
-      savingsService.savingsWithdraw(transactionData).then(function (response) {
+      fixeddepositService.fd_Close(transactionData).then(function (response) {
         console.log(response);
       });
     };

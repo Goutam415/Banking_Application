@@ -4,6 +4,7 @@ var logger = require('winston'),
   mongoose = require('mongoose'),
   Center = mongoose.model('Center'),
   AccountCreate = mongoose.model('AccountCreate'),
+  TransactionIds = mongoose.model('TransactionId');
   Staff = mongoose.model('Staff'),
   Joi = require('joi'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
@@ -129,158 +130,149 @@ exports.createStaff = function(req, res, next) {
 
 
 //  Create account query is here
-exports.createAccount = function(req, res, next) {
+exports.createFdAccount = function(req, res, next) {
   logger.debug('Creating your acccount pls wait....!!!', req);
   var createAccountDetails = new AccountCreate(req.body);
-  createAccountDetails.save(function(err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.status(200).send(createAccountDetails);
-    }
-  });
-};
+  var date = new Date();
 
 
-exports.detailsChecker = function(req, res, next) {
-  logger.debug('Checking your account for details. Please wait....!!!', req);
-  var accountNum = req.body.accountNumber;
-
-  var transactionType1 = req.body.transactions.transactionType;
-  var transactionAmount1 = req.body.transactions.transactionAmount;
-
-  AccountCreate.find({ accountNumber: accountNum }).exec(function(err, data) {
-    if ((!err) && (transactionType1 === 'Deposit')) {
-      logger.info('Finding document to ensure the details.');
-      var data1 = { firstName: data[0].accountDetails[0].firstName,
-        middleName: data[0].accountDetails[0].middleName,
-        lastName: data[0].accountDetails[0].lastName,
-        phoneNumber: data[0].accountDetails[0].phoneNumber,
-        accountBalance: data[0].accountBalance
-      };
-      res.status(200).send({ data: data1 });
-      logger.info('Found your account. please wait while the transaction is being prepared.');
-    } else if ((!err) && (transactionType1 === 'Withdrawal')) {
-      logger.info('Finding document to ensure the details.');
-      if (data[0].accountBalance < transactionAmount1) {
-        var data2 = { firstName: data[0].accountDetails[0].firstName,
-          middleName: data[0].accountDetails[0].middleName,
-          lastName: data[0].accountDetails[0].lastName,
-          phoneNumber: data[0].accountDetails[0].phoneNumber,
-          accountBalance: data[0].accountBalance
-      };
-        res.status(200).send({ data: data2, msg: 'You dont have enough balance to withdraw the amount' });
-      } else {
-        logger.info('Finding document to ensure the details.');
-        var data3 = { firstName: data[0].accountDetails[0].firstName,
-        middleName: data[0].accountDetails[0].middleName,
-        lastName: data[0].accountDetails[0].lastName,
-        phoneNumber: data[0].accountDetails[0].phoneNumber,
-        accountBalance: data[0].accountBalance
-      };
-        res.status(200).send({ data: data3 });
-        logger.info('Found your account. please wait while the transaction is being prepared.');
-      }
-    } else {
-      logger.info('Sorry Account Does not Exists.');
-      res.status(403).send({ msg: err });
-    }
-  });
-};
-
-
-
-
-
-exports.savingsAccountDeposit = function(req, res, next) {
-  logger.debug('Deposit is in progress. Please wait....!!!', req);
-  var accountNum = req.body.accountNumber;
-  var transactionEmployeeId1 = req.body.transactions.transactionEmployeeId;
-  var transactorCustName1 = req.body.transactions.transactorCustName;
-
-// Transaction Id Creating function starts here
+// transaction ID generation function starts here
   var number = Math.random();
   number.toString(36);
   var id = number.toString(36).substr(2, 9);
   id = id.toLocaleUpperCase();
   id.length >= 9;
-// Transaction Id Creating function ends here
+// transaction ID generation function ends here
 
+  var accountNum = createAccountDetails.accountNumber;
+
+  var fdAccountNumber1 = Date.now();
+  var accountCreatorEmployeeId1 = createAccountDetails.fdAccount[0].accountCreatorEmployeeId;
   var transactionId1 = id;
-  var transactionType1 = req.body.transactions.transactionType;
-  var transactionAmount1 = req.body.transactions.transactionAmount;
-  var transactionDate1 = req.body.transactions.transactionDate;
-  AccountCreate.find({ accountNumber: accountNum }).exec(function(err, data) {
-    if (!err) {
-      logger.info('finding document to update balance');
-      var bal = data[0].accountBalance;
-      if(!bal) {
-        bal = 0;
-      }
-      bal = bal + transactionAmount1;
-      logger.info('Found your account. please wait while the transaction is being processed.');
-      var transaction = { transactionEmployeeId: transactionEmployeeId1, balanceAfterTransaction: bal, transactorCustName: transactorCustName1, transactionId: transactionId1, transactionType: transactionType1, transactionAmount: transactionAmount1, transactionDate: transactionDate1 };
-      AccountCreate.update({ accountNumber: accountNum }, { accountBalance: bal, $push: { transactions: transaction } }).exec(function(err, data) {
-        if (!err) {
-          logger.info('Update transaction :  Success');
-          res.status(200).send({ data: data });
-          logger.info('Deposit done successfully');
-        } else {
-          logger.info('Update transaction :  Failed');
-          res.status(403).send({ msg: err });
-        }
-      });
-    } else {
-      logger.info('Transaction Declined due to some technical error');
-      res.status(403).send({ msg: err });
-    }
-  });
-};
+  var transactionType1 = createAccountDetails.fdAccount[0].transactionType;
+  var fdAmount1 = createAccountDetails.fdAccount[0].fdAmount;
+  var rateOfInterest1 = createAccountDetails.fdAccount[0].rateOfInterest;
+  var accountOpenDate1 = date;
+  var accountCloseDate1 = createAccountDetails.fdAccount[0].accountCloseDate;
+  var accountStatus1 = 'Active';
+  // var durationOfAccount1 = 0;
+
+  var FDAccounts = { fdAccountNumber: fdAccountNumber1, accountCreatorEmployeeId: accountCreatorEmployeeId1,
+      transactionId: transactionId1, transactionType: transactionType1, fdAmount: fdAmount1, rateOfInterest: rateOfInterest1,
+      accountOpenDate: accountOpenDate1, accountCloseDate: accountCloseDate1, accountStatus: accountStatus1
+      // durationOfAccount: durationOfAccount1
+ };
 
 
 
-exports.savingsAccountWithdraw = function(req, res, next) {
-  logger.debug('Withdrawal is in progress. Please wait....!!!', req);
-  var accountNum = req.body.accountNumber;
-  var transactionEmployeeId1 = req.body.transactions.transactionEmployeeId;
-  var transactorCustName1 = req.body.transactions.transactorCustName;
-
-// Transaction Id Creating function starts here
-  var number = Math.random();
-  number.toString(36);
-  var id = number.toString(36).substr(2, 9);
-  id = id.toLocaleUpperCase();
-  id.length >= 9;
-// Transaction Id Creating function ends here
-
-  var transactionId1 = id;
-  var transactionType1 = req.body.transactions.transactionType;
-  var transactionAmount1 = req.body.transactions.transactionAmount;
-  var transactionDate1 = req.body.transactions.transactionDate;
-  AccountCreate.find({ accountNumber: accountNum }).exec(function(err, data) {
-    if (!err) {
-      logger.info('finding document to update balance');
-      var bal = data[0].accountBalance;
-      if (bal >= transactionAmount1) {
-        bal = bal - transactionAmount1;
-        logger.info('Found your account. please wait while the transaction is being processed.');
-        var transaction = { transactionEmployeeId: transactionEmployeeId1, balanceAfterTransaction: bal, transactorCustName: transactorCustName1, transactionId: transactionId1, transactionType: transactionType1, transactionAmount: transactionAmount1, transactionDate: transactionDate1 };
-        AccountCreate.update({ accountNumber: accountNum }, { accountBalance: bal, $push: { transactions: transaction } }).exec(function(err, data) {
-          if (!err) {
-            logger.info('Update transaction :  Success');
-            res.status(200).send({ data: data });
-            logger.info('Withdrawal done successfully');
-          } else {
-            logger.info('Update transaction :  Failed');
-            res.status(403).send({ msg: err });
-          }
+  AccountCreate.update({ accountNumber: accountNum }, { fdAmount: fdAmount1,
+    isFDAccount: accountStatus1,
+    $push: { fdAccount: FDAccounts } }).exec(function(err, data) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
         });
+      } else {
+        res.status(200).send({ data: fdAmount1, msg: 'Fixed Deposit created Successfully' });
       }
-    } else {
-      logger.info('Transaction Declined due to some technical error');
-      res.status(403).send({ data: err, msg: 'Transaction Declined due to some technical error' });
+    });
+};
+
+
+exports.closeFdAccount = function(req, res, next) {
+  logger.debug('Preparing to close your acccount pls wait....!!!', req);
+
+  var createAccountDetails = new AccountCreate(req.body);
+  var date = new Date();
+
+  // Calculation of total number of days for which account is maintained starts here.
+  function date_checker(closeDate, actuallyCloseDate) {
+    if(actuallyCloseDate.getFullYear() > closeDate.getFullYear()) {
+      return true;
+    }
+    
+    if(((actuallyCloseDate.getMonth() +1) >= (closeDate.getMonth() + 1)) && (actuallyCloseDate.getDate() >= closeDate.getDate())) {
+      return true;
+    }
+
+    return false;
+  }
+  // Calculation of total number of days for which account is maintained ends here.
+
+  // transaction ID generation function starts here
+  function generateTransactionIds() {
+    var number = Math.random();
+    number.toString(36);
+    var id = number.toString(36).substr(2, 9);
+    id = id.toLocaleUpperCase();
+    id.length >= 9;
+    return id;
+  }
+  // transaction ID generation function ends here
+
+  // function to calculate duration of account maintained starts here
+  function days_between(date1, date2) {
+        // The number of milliseconds in one day
+        var ONE_DAY = 1000 * 60 * 60 * 24
+        // Convert both dates to milliseconds
+        var date1_ms = date1.getTime()
+        var date2_ms = date2.getTime()
+        // Calculate the difference in milliseconds
+        var difference_ms = Math.abs(date1_ms - date2_ms)
+        // Convert back to days and return
+        return Math.round(difference_ms/ONE_DAY)
+  }
+  // function to calculate duration of account maintained ends here
+
+  // function to calculate_total_amount to be returned starts here
+  function calculate_interest(rateOfInterest, fdAmount) {
+    var interestAmount = (rateOfInterest*fdAmount)/100;
+    return interestAmount;
+  }
+  // function to calculate_total_amount to be returned ends here
+
+ AccountCreate.findOne({ 'fdAccount.fdAccountNumber': req.body.accountNumber }, { 'fdAccount.fdAccountNumber.$': true }).exec(function(err, data) {
+   if(err) {
+    logger.info('Cannot find the account');
+    return res.status(400).send({ message: errorHandler.getErrorMessage(err), msg: 'Cannot find the account' });
+   } else {
+     if(data.fdAccount[0].accountStatus == 'Closed') {
+        logger.info('Account is already closed on : ' + data.fdAccount[0].actuallyAccountClosedDate);
+        return res.status(400).send({ msg: 'Account is already closed on : ' + data.fdAccount[0].actuallyAccountClosedDate });
+     } else {       
+        var commissionAmountToBeDeducted = 0;
+        var amountToBeReturned;
+        var dateCheckResult = date_checker(data.fdAccount[0].accountCloseDate, date);
+
+        if(!dateCheckResult) {
+            commissionAmountToBeDeducted = calculate_interest(data.fdAccount[0].commissionPercentage, data.fdAccount[0].fdAmount);
+            amountToBeReturned = data.fdAccount[0].fdAmount - commissionAmountToBeDeducted;
+        } else {
+            interestAmount = calculate_interest(data.fdAccount[0].rateOfInterest, data.fdAccount[0].fdAmount);
+            amountToBeReturned = interestAmount + data.fdAccount[0].fdAmount;
+        }
+    
+        AccountCreate.update({ 'fdAccount.fdAccountNumber': req.body.accountNumber }, { $set: { 
+            'fdAccount.$.closingTransactionId' : generateTransactionIds(),
+            'fdAccount.$.closingTransactionType' : createAccountDetails.fdAccount[0].transactionType,
+            'fdAccount.$.accountStatus' : 'Closed',
+            'fdAccount.$.commissionDeducted' : commissionAmountToBeDeducted,
+            'fdAccount.$.actuallyAccountClosedDate' : date,
+            'fdAccount.$.accountClosingEmployeeId' : createAccountDetails.fdAccount[0].accountClosingEmployeeId,
+            'fdAccount.$.durationOfAccount': days_between(date, data.fdAccount[0].accountOpenDate),
+            'fdAccount.$.totalAmountReturned': amountToBeReturned 
+          }
+        })
+        .exec(function(err, data) {          
+          if (err) {
+            logger.info('Cannot find the account');
+            return res.status(400).send({ message: errorHandler.getErrorMessage(err) });
+          } else {
+            logger.info(data);
+            return res.status(200).send({ data: data, msg: 'Account Closed Successfully..!!' });
+          }
+        });  
+      }
     }
   });
 };

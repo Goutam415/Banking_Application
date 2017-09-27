@@ -11,6 +11,7 @@ module.exports = function (app, db, initSession) {
   var localStrategies = require('../config/local.strategies');
   var path = require('path');
   var centerController = require('../controllers/center.server.controller.js');
+  var fdAccountController = require('../controllers/center.server.fixedDeposite.controller.js');
   var emrController = require('../controllers/center.server.emr.controller.js');
   var appListController = require('../controllers/center.server.centersetting.appcategory.controller');
   var doctorController = require('../controllers/center.server.centersetting.doctor.controller');
@@ -110,7 +111,14 @@ module.exports = function (app, db, initSession) {
 
   // route for savings account deposit
   router.put('/api/center/deposit', centerController.savingsAccountDeposit);
+  // route for savings account withdraw
   router.put('/api/center/withdraw', centerController.savingsAccountWithdraw);
+
+  // route for fd account open
+  router.put('/api/center/fdopen', fdAccountController.createFdAccount);
+
+  // route for fd account close
+  router.put('/api/center/fdclose', fdAccountController.closeFdAccount);
 
 /**
 * @api {post} center/api/update/staff/center center staffcenterID_update service * @apiVersion 0.1.0
