@@ -50,7 +50,7 @@ var FDAccount = new Schema({
 });
 
 var RDAccount = new Schema({
-  accountNumber: { type: Number },
+  rdAccountNumber: { type: Number },
   accountCreatorEmployeeId: { type: String },
   transactionId: { type: String },
   transactionType: { type: String },
@@ -82,12 +82,11 @@ var LoanAccount = new Schema({
 var AccountCreateSchema = new Schema({
   accountNumber: { type: Number },
   accountBalance: { type: Number },
-  rdBalance: { type: Number },
-  fdAmount: { type: Number },
   customerId: { type: Number },
   accountType: { type: String },
   panNumber: { type: String },
   creatorId: { type: String },
+  closerId: { type: String },
   accountStatus: { type: String },
   accountDetails: [Details],
   transactions: [Transaction],
